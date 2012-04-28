@@ -296,6 +296,9 @@
               instance.currentTime( 0 );
             }
           }
+          if ( offset > ( offsetTop + section1.height() ) ) {
+            instance.pause();
+          }
         });
       });
     </script>
