@@ -11,15 +11,40 @@
   <style type="text/css">
     body {
       font-family: "Helvetica Neue", sans-serif;
-       background: url(img/fluffy.png) repeat;
+       background: url(img/facebook-egypt.jpg) repeat;
     }
+
+    section { 
+     height: 850px;
+     overflow-y:hidden;
+    }
+
     .wrapper {
       width: 960px;
       margin: 0 auto;
       position: relative;
     }
+
     #video, #youtube object, .column {
       width: 480px;
+    }
+
+    canvas {
+      height: 400px !important;
+      width: 400px !important;
+    }
+    #examples-parallax {
+      background: red;
+      position: absolute;
+      height: 600px;
+    }
+
+    #blur {
+      position: absolute;
+      top:0;
+      height: 100px;
+      width: 100px;
+      border: 1px solid black;
     }
   </style>
   <script>
@@ -30,27 +55,31 @@
       });
 
       scrollorama.animate("#parallax1", {
-        delay: 400,
+        delay: 40,
         duration: 600,
         property: "top",
-        start: 800,
+        start: 0,
         end: -800
       });
       scrollorama.animate("#parallax2", {
         delay: 200,
-        duration: 1200,
+        duration: 200,
         property: "top",
-        start: 500,
+        start: 50,
         end: -500
       });
       scrollorama.animate("#parallax3", {
-        delay: 900,
+        delay: 90,
         duration: 300,
         property: "top",
-        start: 400,
+        start: 350,
         end: -400
       });
+
+      stackBlurImage("img", "canvas", 30);
+
     }, false);
+
   </script>
 </head>
 <body>
@@ -68,6 +97,8 @@
     <h1>My Popcorn Fun!</h1>
   </header>
   <div id="main" role="main">
+       <canvas id="canvas" width="300" height="300"></canvas>
+              <img id="img" src="img/facebook-egypt.jpg" width="300" height="300" />
       <section id="section-1">
        <div class="scrollblock" id="examples-parallax">
           <div id="parallax1">
@@ -79,14 +110,14 @@
               <div id="info"></div>
             </div>
           <div id="parallax2">
-              <span>Parallax is awesome</span>
+            <h2 id="mytext">Hello world <span>Parallax is awesome</span></h2>     
           </div>
           <div id="parallax3">
-              <img src="http://lorempixel.com/400/400/sports/1/" />
+          
+              <img  src="http://lorempixel.com/400/400/sports/1/" />
           </div>
        </div>
       </section>
-
   </div>
   <footer>
 
@@ -98,6 +129,7 @@
     <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
   <script src="js/jquery.scrollTo-min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/jquery.scrollorama.js"></script>
+  <script src="js/stackblur.js"></script>
   <script src="message.js"></script>
   <script>
 
@@ -109,7 +141,6 @@
       $(window).resize( function(e) {
          $("#window-height").text( $(window).height() );
       });
-
       var p = Popcorn( "#video" )
       .volume(0)
       p.footnote({
@@ -117,7 +148,7 @@
         end: 5,
         text: "Hello world",
         target: "info"
-      }); 
+      });
 
 
   </script>
