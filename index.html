@@ -1,6 +1,95 @@
-i<html>
-  <head>
-  </head>
-  <body>
-  </body>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title></title> <!-- CHANGE THE TITLE! -->
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+  <style type="text/css">
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+       background: url(img/fluffy.png) repeat;
+    }
+    .wrapper {
+      width: 960px;
+      margin: 0 auto;
+      position: relative;
+    }
+    #video, #youtube object, .column {
+      width: 480px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="bg-image"></div>
+<div class="wrapper">
+  <div id="dev-info" style="position:fixed;bottom:10px;left:10px;background:rgba(0,0,0,.8);color:red;">
+    <!-- for dev: shows current scroll postiion -->
+    scroll:<span id="scroll-position"></span>
+    window:<span id="window-height"></span>
+    doc:<span id="doc-height"></span>
+  </div>
+
+  <header>
+    <h1>My Popcorn Fun!</h1>
+  </header>
+  <div id="main" role="main">
+      <section id="section-1">
+       <div class="scrollblock" id="examples-parallax">
+          <div id="parallax1">
+              <video id="video" controls> 
+                <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.mp4">
+                <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv">
+                <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.webm">
+              </video>
+              <div id="info"></div>
+            </div>
+          <div id="parallax2">
+              <span>Parallax is awesome</span>
+          </div>
+          <div id="parallax3">
+              <img src="http://lorempixel.com/400/400/sports/1/" />
+          </div>
+       </div>
+      </section>
+
+  </div>
+  <footer>
+
+  </footer>
+</div>
+  <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+    <script>window.Popcorn || document.write('<script src="js/popcorn-complete.min.js"><\/script>')</script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
+  <script src="js/jquery.scrollTo-min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="message.js"></script>
+  <script>
+  
+      $("#doc-height").text( $(document).height() );
+      $("#window-height").text( $(window).height() );
+      $(window).scroll(function(e) {
+        $("#scroll-position").text( window.pageYOffset );
+      });
+      $(window).resize( function(e) {
+         $("#window-height").text( $(window).height() );
+      });
+
+      var p = Popcorn( "#video" )
+      .volume(0)
+      p.footnote({
+        start: 1,
+        end: 5,
+        text: "Hello world",
+        target: "info"
+      }); 
+
+
+  </script>
+  <!-- end scripts -->
+</body>
 </html>
