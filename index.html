@@ -99,7 +99,7 @@
           buttons[ i ].addEventListener( "click", function( e ) {
             console.log( counter );
             var element = $( "#section-" + ( counter + 1 ) );
-            $.scrollTo( element, 1000 );
+            $.scrollTo( element, 1000 * counter );
           }, false);
         })( i );
       }
@@ -152,19 +152,9 @@
         end: 1086
       });
 
-      boxBlurImage("img", "canvas", 30);
+      //boxBlurImage("img", "canvas", 30);
 
-      var p = Popcorn( "#video" )
-      .play(10).volume(0).supertext({
-        start: 17,
-        end: 20,
-        text: "Hello world",
-        target: "target-1-1"
-      });
-
-
-    }, false);
-
+            }, false);
   </script>
 </head>
 <body>
@@ -218,6 +208,7 @@
              <div id="video-container">
                 <video id="video" controls> 
                     <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
+                    <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
                 </video>
             </div>
           </div>
@@ -255,7 +246,7 @@
   <script src="js/jquery.scrollorama.js"></script>
   <script src="js/popcorn.supertext.js"></script>
   <script src="js/stackblur.js"></script>
-  <script src="js/fastblur.js"></script>
+  <!--<script src="js/fastblur.js"></script>-->
   <script src="message.js"></script>
   <script>
 
@@ -265,29 +256,49 @@
 
         var height = window.pageYOffset;
         if ( height < 600 ) { 
-          boxBlurImage("img", "canvas", (height/600) * 10);
+          //boxBlurImage("img", "canvas", (height/600) * 10);
         }
         $("#scroll-position").text( height );
       });
       $(window).resize( function(e) {
          $("#window-height").text( $(window).height() );
       });
-      // if we want to make the video scroll the page use this shit
-      /*p.on( "canplayall", function( e ) {
-        var doubleDuration = this.duration() * 2,
-            section1 = document.getElementById( "section-1" );
-            scrollLength = doubleDuration / section1.height;
 
-        for( var i = 0; i < this.duration(); i += 0.5 ) {
-          (function( val, instance ) {
-            instance.cue( val, function() {
-              $.scrollTo( section1.offsetTop + val );
-            });
-          })( i, this );
-        }
-      });*/
+      var p = Popcorn( "#video" )
+      .play(10).volume(0).supertext({
+        start: 17,
+        end: 20,
+        text: "Hello world",
+        target: "target-1-1"
+      });
 
-  </script>
+      p.on( "canplayall", function( e ) {
+          var section1 = $( "#section-2" ),
+              duration = this.duration(),
+              scrollLength = duration / section1.height(),
+              instance = this;
+
+        $(window).scroll(function(e) {
+          var offset = window.pageYOffset,
+              offsetTop = section1.offset().top,
+              event1 = (offsetTop + ( 17 * scrollLength ) ),
+              event2 = (offsetTop + ( 23 * scrollLength ) ),
+              event3 = (offsetTop + ( 93 * scrollLength ) );
+
+          if ( offset > 620 ) {
+            if ( offset > event3 ) {
+              instance.currentTime( 93 );
+            } else if ( offset < event3 && offset > event2 ) {
+              instance.currentTime( 23 );
+            } else if ( offset < event2 && offset > event1 ) {
+              instance.currentTime( 17 );
+            } else {
+              instance.currentTime( 0 );
+            }
+          }
+        });
+      });
+    </script>
   <!-- end scripts -->
 </body>
 </html>
