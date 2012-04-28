@@ -178,7 +178,7 @@
 
         var height = window.pageYOffset;
         if ( height < 600 ) { 
-          boxBlurImage("img", "canvas", Math.min( height, 100 ));
+          boxBlurImage("img", "canvas", (height/600) * 10);
         }
         $("#scroll-position").text( height );
       });
