@@ -22,6 +22,36 @@
       width: 480px;
     }
   </style>
+  <script>
+    document.addEventListener( "DOMContentLoaded", function( event ) {
+      var scrollorama = $.scrollorama({
+        enablePin: false,
+        blocks: ".scrollblock"
+      });
+
+      scrollorama.animate("#parallax1", {
+        delay: 400,
+        duration: 600,
+        property: "top",
+        start: 800,
+        end: -800
+      });
+      scrollorama.animate("#parallax2", {
+        delay: 200,
+        duration: 1200,
+        property: "top",
+        start: 500,
+        end: -500
+      });
+      scrollorama.animate("#parallax3", {
+        delay: 900,
+        duration: 300,
+        property: "top",
+        start: 400,
+        end: -400
+      });
+    }, false);
+  </script>
 </head>
 <body>
 
@@ -67,9 +97,10 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
   <script src="js/jquery.scrollTo-min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="js/jquery.scrollorama.js"></script>
   <script src="message.js"></script>
   <script>
-  
+
       $("#doc-height").text( $(document).height() );
       $("#window-height").text( $(window).height() );
       $(window).scroll(function(e) {
