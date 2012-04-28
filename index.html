@@ -274,23 +274,26 @@
 
       p.on( "canplayall", function( e ) {
           var section1 = $( "#section-2" ),
+              offsetTop = section1.offset().top,
               duration = this.duration(),
-              scrollLength = duration / section1.height(),
-              instance = this;
+              scrollLength = section1.height() / duration,
+              instance = this,
+              times = [ 17, 23, 93 ],
+              events = [];
+
+        for ( var idx in times ) {
+          events.push( offsetTop + ( times[ idx ] * scrollLength ) );
+        }
 
         $(window).scroll(function(e) {
-          var offset = window.pageYOffset,
-              offsetTop = section1.offset().top,
-              event1 = (offsetTop + ( 17 * scrollLength ) ),
-              event2 = (offsetTop + ( 23 * scrollLength ) ),
-              event3 = (offsetTop + ( 93 * scrollLength ) );
+          var offset = window.pageYOffset;
 
           if ( offset > 620 ) {
-            if ( offset > event3 ) {
+            if ( offset > events[ 2 ] ) {
               instance.currentTime( 93 );
-            } else if ( offset < event3 && offset > event2 ) {
+            } else if ( offset < events[ 2 ] && offset > events[ 1 ] ) {
               instance.currentTime( 23 );
-            } else if ( offset < event2 && offset > event1 ) {
+            } else if ( offset < events[ 1 ] && offset > events[ 0 ] ) {
               instance.currentTime( 17 );
             } else {
               instance.currentTime( 0 );
