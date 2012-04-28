@@ -64,10 +64,21 @@
   </style>
   <script>
     document.addEventListener( "DOMContentLoaded", function( event ) {
-      var scrollorama = $.scrollorama({
-        enablePin: false,
-        blocks: ".scrollblock"
-      });
+      var buttons = document.getElementsByClassName( "sectionButtons" ),
+          scrollorama = $.scrollorama({
+            enablePin: false,
+            blocks: ".scrollblock"
+          });
+
+      for ( var i = 0, l = buttons.length; i < l; i++ ) {
+        (function( counter ) {
+          buttons[ i ].addEventListener( "click", function( e ) {
+            console.log( counter );
+            var element = $( "#section-" + ( counter + 1 ) );
+            $.scrollTo( element, 1000 );
+          }, false);
+        })( i );
+      }
 
       /*scrollorama.animate("#parallax1", {
         delay: 0,
@@ -118,6 +129,12 @@
 
   <header>
     <h1>My Popcorn Fun!</h1>
+    <div>
+      <button class="sectionButtons" id="sec1">Section 1</button>
+      <button class="sectionButtons" id="sec2">Section 2</button>
+      <button class="sectionButtons" id="sec3">Section 3</button>
+      <button class="sectionButtons" id="sec4">Section 4</button>
+    </div>
   </header>
   <div id="main" role="main">
        <canvas id="canvas" width="300" height="300"></canvas>
@@ -126,7 +143,7 @@
        <div class="scrollblock" id="examples-parallax">
           <div id="parallax1">
               <video id="video" controls> 
-                <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.mp4">
+                <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
                 <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv">
                 <source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.webm">
               </video>
@@ -194,7 +211,20 @@
         target: "info"
       });
 
+      // if we want to make the video scroll the page use this shit
+      /*p.on( "canplayall", function( e ) {
+        var doubleDuration = this.duration() * 2,
+            section1 = document.getElementById( "section-1" );
+            scrollLength = doubleDuration / section1.height;
 
+        for( var i = 0; i < this.duration(); i += 0.5 ) {
+          (function( val, instance ) {
+            instance.cue( val, function() {
+              $.scrollTo( section1.offsetTop + val );
+            });
+          })( i, this );
+        }
+      });*/
   </script>
   <!-- end scripts -->
 </body>
