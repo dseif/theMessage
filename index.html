@@ -169,7 +169,12 @@
       $("#doc-height").text( $(document).height() );
       $("#window-height").text( $(window).height() );
       $(window).scroll(function(e) {
-        $("#scroll-position").text( window.pageYOffset );
+
+        var height = window.pageYOffset;
+        if ( height < 600 ) { 
+          stackBlurImage("img", "canvas", Math.min( height, 100 ));
+        }
+        $("#scroll-position").text( height );
       });
       $(window).resize( function(e) {
          $("#window-height").text( $(window).height() );
