@@ -1,6 +1,44 @@
-i<html>
+<html>
   <head>
+    <script src="scrollorama/js/jquery-1.7.1.min.js"></script>
+    <script src="scrollorama/js/jquery.lettering-0.6.1.min.js"></script>
+    <script src="scrollorama/js/jquery.scrollorama.js"></script>
+    <script>
+      document.addEventListener( "DOMContentLoaded", function( event ) {
+        var scrollorama = $.scrollorama({
+          enablePin: false,
+          blocks: ".scrollblock"
+        });
+
+        scrollorama.animate("#parallax1", {
+          delay: 400,
+          duration: 600,
+          property: "top",
+          start: 800,
+          end: -800
+        });
+        scrollorama.animate("#parallax2", {
+          delay: 200,
+          duration: 1200,
+          property: "top",
+          start: 500,
+          end: -500
+        });
+        scrollorama.animate("#parallax3", {
+          delay: 900,
+          duration: 300,
+          property: "top",
+          start: 400,
+          end: -400
+        });
+      }, false);
+    </script>
   </head>
   <body>
+    <div class="scrollblock">
+      <h2 id="parallax1">scrolling</h2>
+      <h2 id="parallax2">MORE SCROLLING</h2>
+      <h2 id="parallax3">ASDASDASD</h2>
+  </div>
   </body>
 </html>
