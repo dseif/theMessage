@@ -36,6 +36,23 @@
       height: 800px !important;
       width: 800px !important;
     }
+
+    /* TITLE SEQUENCE */
+    #section-1 {
+      height: 4000px;
+    }
+
+    #section-1 .title {
+      font-family: "athelas", georgia;
+      color: #FFF;
+      text-align: center;
+      font-size: 15em;
+      line-height: .8;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+
     #examples-parallax {
       position: absolute;
       height: 600px;
@@ -51,17 +68,17 @@
 
     section {
       position: relative;
-      background-color: #444;
+      background-color: #000;
       height: 1500px;
       width: 100%;
       overflow-y: hidden;
       margin-bottom: 30px;
     }
 
-    section > div {
+    section > .pane {
       position: absolute;
       -webkit-transition: all .1s ease;
-
+      color: #FFF;
       height: 100px;
       width: 100px;
       background: red; 
@@ -91,10 +108,6 @@
     #pane-3-5 { left: 80% }
     #pane-3-6 { left: 90% }
 
-    .parallax-container {
-      position: absolute;
-      color: #FFF;
-    }
 
     .parallax-container-off {
       text-shadow: 0 0 40px white;
@@ -117,7 +130,6 @@
     .parallax-container-A .parallax-container-off {
       text-shadow: 0 0 40px white;
       
-      
     }
     .parallax-container-B .parallax-container-off {
       text-shadow: 0 0 10px white;
@@ -127,8 +139,6 @@
       text-shadow: 0 0 5px white;
        font-size: 7em;
     }
-
-
 
     .parallax-container > div > div {
       padding: 30px;
@@ -152,12 +162,15 @@
   </style>
   <script>
     document.addEventListener( "DOMContentLoaded", function( event ) {
+
+      //Title
+      $(".title").lettering();
       var buttons = document.getElementsByClassName( "sectionButtons" );
        
       for ( var i = 0, l = buttons.length; i < l; i++ ) {
         (function( counter ) {
           buttons[ i ].addEventListener( "click", function( e ) {
-            console.log( counter );
+ 
             var element = $( "#section-" + ( counter + 1 ) );
             $.scrollTo( element, 1000 * counter );
           }, false);
@@ -212,7 +225,7 @@
         for(j=0;j<elements.length;j++) {
           //Parent offset: var parentOffset = elements[j].parentNode.offsetTop;
           //elements[j].style.top = -parentOffset + adjustment + ( offset/ratio ) + "px";
-          elements[j].style.top = ( -top + adjustment + (offset/ratio) ) + "px";
+          elements[j].style.top = ( adjustment + ((offset - top) /ratio) ) + "px";
           console.log( elements[j].style.top );
         }
       }
@@ -235,17 +248,16 @@
   </div>
 
   <header>
-    <h1>The Message</h1>
-
-    <div>
-      <button class="sectionButtons" id="sec1">Section 1</button>
-      <button class="sectionButtons" id="sec2">Section 2</button>
-      <button class="sectionButtons" id="sec3">Section 3</button>
-      <button class="sectionButtons" id="sec4">Section 4</button>
-    </div>
   </header>
   <div id="main" role="main">
- <section id="section-1">
+    <section id="section-1">
+      <h1 class="title">The Message</h1>
+       <div class="buttons">
+          <button class="sectionButtons" id="sec1">Section 1</button>
+          <button class="sectionButtons" id="sec2">Section 2</button>
+          <button class="sectionButtons" id="sec3">Section 3</button>
+          <button class="sectionButtons" id="sec4">Section 4</button>
+      </div>
     </section>
     <section id="section-2">
       <div id="pane-2-bg" class="pane-bg"><img src="img/andromeda.png"/></div>
@@ -255,19 +267,19 @@
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
           </video>
       </div>
-      <div id="pane-2-2">2</div>
-      <div id="pane-2-3">3</div>
-      <div id="pane-2-4">4</div>
-      <div id="pane-2-5">5</div>
-      <div id="pane-2-6">6</div>
+      <div class="pane" id="pane-2-2">2</div>
+      <div class="pane" id="pane-2-3">3</div>
+      <div class="pane" id="pane-2-4">4</div>
+      <div class="pane" id="pane-2-5">5</div>
+      <div class="pane" id="pane-2-6">6</div>
     </section>
     <section id="section-3">
-      <div id="pane-3-1">1</div>
-      <div id="pane-3-2">2</div>
-      <div id="pane-3-3">3</div>
-      <div id="pane-3-4">4</div>
-      <div id="pane-3-5">5</div>
-      <div id="pane-3-6">6</div>
+      <div class="pane" id="pane-3-1">1</div>
+      <div class="pane" id="pane-3-2">2</div>
+      <div class="pane" id="pane-3-3">3</div>
+      <div class="pane" id="pane-3-4">4</div>
+      <div class="pane" id="pane-3-5">5</div>
+      <div class="pane" id="pane-3-6">6</div>
     </section>
     <section id="section-4">
     </section>
@@ -287,9 +299,11 @@
   <script src="js/jquery.scrollTo-min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/jquery.scrollorama.js"></script>
   <script src="js/popcorn.supertext.js"></script>
+  <script src="js/lettering.js"></script>
+  <!--
   <script src="js/stackblur.js"></script>
-
   <script src="js/fastblur.js"></script>
+-->
   <script type="text/javascript" src="http://use.typekit.com/fph5scc.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <script src="message.js"></script>
@@ -321,7 +335,7 @@
         activeClass: "parallax-container-active",
         inactiveClass: "parallax-container-off",
         text: "Supremacy",
-        target: "parallax2-1"
+        target: "pane-2-1"
       })
       .supertext({
         start: 18,
@@ -329,7 +343,7 @@
         activeClass: "parallax-container-active",
         inactiveClass: "parallax-container-off",
         text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
-        target:"parallax2-2"
+        target:"pane-2-4"
       });
 
       p.on( "canplayall", function( e ) {
