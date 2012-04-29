@@ -65,6 +65,20 @@
         //SCROLLSTUFF
         var offset = window.pageYOffset;
 
+        if ( offset > sectionTop[ 2 ] && offset < sectionTop[ 3 ] ) {
+          p.play( p.currentTime() > 10 ? p.currentTime() : 10 );
+          p2.pause();
+          p3.pause();
+        } else if ( offset > sectionTop[ 3 ] && offset < sectionTop[ 4 ] ) {
+          p2.play();
+          p.pause();
+          p3.pause();
+        } else if ( offset > sectionTop[ 4 ] ) {
+          p3.play();
+          p2.pause();
+          p.pause();
+        }
+
         //TITLE ------------- 
         $("#section-1 h1").css( {
           "font-size" : 5.5 + (offset/10) + "em",
