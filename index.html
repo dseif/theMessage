@@ -39,11 +39,11 @@
 
     /* TITLE SEQUENCE */
     #section-1 {
-      height: 4000px;
+      height: 7000px;
     }
 
     #section-1 .title {
-      font-family: "athelas", georgia;
+      font-family: "metallophile-sp8", "athelas", georgia;
       color: #FFF;
       text-align: center;
       font-size: 15em;
@@ -185,8 +185,8 @@
 
 
       $(window).scroll(function(e) {
-        var offset = window.pageYOffset;
 
+        var offset = window.pageYOffset;
         //Section 2 ----------------------------------
         parallax( "pane-2-bg", 4, sectionTop[2], 900);
         //Level A - Farthest
@@ -196,7 +196,7 @@
         //Level C
         parallax( ["pane-2-3", "pane-2-5"], 1.25, sectionTop[2], 500 );
         //Level D
-        parallax(  ["pane-2-4", "pane-2-1"], 1.5, sectionTop[2], 900 );
+        parallax(  ["pane-2-4", "pane-2-1"], 1.5, sectionTop[2], 100 );
         
         //Section 3 ----------------------------------
         parallax( "pane-3-1", .8, sectionTop[3] );
@@ -226,11 +226,79 @@
           //Parent offset: var parentOffset = elements[j].parentNode.offsetTop;
           //elements[j].style.top = -parentOffset + adjustment + ( offset/ratio ) + "px";
           elements[j].style.top = ( adjustment + ((offset - top) /ratio) ) + "px";
-          console.log( elements[j].style.top );
+
         }
       }
 
     });
+
+
+
+      var p = Popcorn( "#video" );
+      p.on( "canplayall", function( e ) {
+
+      this.play(10).volume(0)
+        .supertext({
+          start: 15,
+          end: 18,
+          activeClass: "parallax-container-active",
+          inactiveClass: "parallax-container-off",
+          text: "Supremacy",
+          target: "pane-2-1"
+        })
+        .supertext({
+          start: 18,
+          end: 20,
+          activeClass: "parallax-container-active",
+          inactiveClass: "parallax-container-off",
+          text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
+          target:"pane-2-4"
+        });
+
+          var section1 = $( "#section-2" ),
+              offsetTop = section1.offset().top,
+              duration = this.duration(),
+              scrollLength = section1.height() / duration,
+              instance = this,
+              times = [ 17, 23, 93 ],
+              events = [];
+
+        for ( var idx in times ) {
+          events.push( offsetTop + ( times[ idx ] * scrollLength ) );
+        }
+
+        $(window).scroll(function(e) {
+          var offset = window.pageYOffset;
+
+          if ( offset > 620 ) {
+            if ( offset > events[ 2 ] ) {
+              instance.currentTime( 93 );
+            } else if ( offset < events[ 2 ] && offset > events[ 1 ] ) {
+              instance.currentTime( 23 );
+            } else if ( offset < events[ 1 ] && offset > events[ 0 ] ) {
+              instance.currentTime( 17 );
+            } else {
+              instance.currentTime( 0 );
+            }
+          }
+          if ( offset > ( offsetTop + section1.height() ) ) {
+            instance.pause();
+          }
+        });
+      });
+
+      // CROWD
+      var crowd = Popcorn("#crowd");
+      crowd.on("canplayall", function() {
+         this.play().volume(0.1);
+        $(window).scroll(function(){
+          var height = window.pageYOffset;
+          var vol = 0.1 + height/7000;
+          if (vol <= 1) {
+            crowd.volume(vol);
+          }
+        });
+      });
 
      
             }, false);
@@ -251,6 +319,7 @@
   </header>
   <div id="main" role="main">
     <section id="section-1">
+      <audio id="crowd" src="media/crowdnoise.mp3"></audio>
       <h1 class="title">The Message</h1>
        <div class="buttons">
           <button class="sectionButtons" id="sec1">Section 1</button>
@@ -260,8 +329,9 @@
       </div>
     </section>
     <section id="section-2">
+      
       <div id="pane-2-bg" class="pane-bg"><img src="img/andromeda.png"/></div>
-      <div id="pane-2-1"> 
+      <div class="pane" id="pane-2-1"> 
         <video id="video" controls> 
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
@@ -292,7 +362,7 @@
 
   </footer>
 </div>
-  <script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+  <script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
     <script>window.Popcorn || document.write('<script src="js/popcorn-complete.min.js"><\/script>')</script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
@@ -327,57 +397,6 @@
          $("#window-height").text( $(window).height() );
       });
 
-      var p = Popcorn( "#video" )
-      .play(10).volume(0)
-      .supertext({
-        start: 15,
-        end: 18,
-        activeClass: "parallax-container-active",
-        inactiveClass: "parallax-container-off",
-        text: "Supremacy",
-        target: "pane-2-1"
-      })
-      .supertext({
-        start: 18,
-        end: 20,
-        activeClass: "parallax-container-active",
-        inactiveClass: "parallax-container-off",
-        text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
-        target:"pane-2-4"
-      });
-
-      p.on( "canplayall", function( e ) {
-          var section1 = $( "#section-2" ),
-              offsetTop = section1.offset().top,
-              duration = this.duration(),
-              scrollLength = section1.height() / duration,
-              instance = this,
-              times = [ 17, 23, 93 ],
-              events = [];
-
-        for ( var idx in times ) {
-          events.push( offsetTop + ( times[ idx ] * scrollLength ) );
-        }
-
-        $(window).scroll(function(e) {
-          var offset = window.pageYOffset;
-
-          if ( offset > 620 ) {
-            if ( offset > events[ 2 ] ) {
-              instance.currentTime( 93 );
-            } else if ( offset < events[ 2 ] && offset > events[ 1 ] ) {
-              instance.currentTime( 23 );
-            } else if ( offset < events[ 1 ] && offset > events[ 0 ] ) {
-              instance.currentTime( 17 );
-            } else {
-              instance.currentTime( 0 );
-            }
-          }
-          if ( offset > ( offsetTop + section1.height() ) ) {
-            instance.pause();
-          }
-        });
-      });
     </script>
   <!-- end scripts -->
 </body>
