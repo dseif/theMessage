@@ -1,4 +1,5 @@
 <!doctype html>
+    };
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -183,9 +184,6 @@
     <section id="section-1">
       <audio id="crowd" src="media/crowdnoise.mp3"></audio>
       <div id="worldmap">
-        <img id="img3" src="img/map-10.png" />
-        <img id="img2" src="img/map-5.png" />
-        <img id="img1" src="img/map-dark.png" /> 
       </div>
       <div id="title-container">
         <h1 class="title">The Limits of Growth<h1>
@@ -220,8 +218,8 @@
         </div>
       </div>
       <div class="pane" id="pane-2-3"></div>
-      <div class="pane" id="pane-2-4"><img src="img/2-map-off.png"></div>
-      <div class="pane" id="pane-2-5"><img src="img/2-tree-off.png"></div>
+      <div class="pane" id="pane-2-4"></div>
+      <div class="pane" id="pane-2-5"></div>
       <div class="pane" id="pane-2-6"></div>
       <div class="pane" id="pane-2-7"></div>
       <div class="pane" id="pane-2-8"></div>
@@ -332,17 +330,16 @@
             text: "",
             target:"pane-2-3",
             callback: function() {
-              var y = Popcorn.youtube("youtube", "http://www.youtube.com/watch?v=PcEto_Q8MlY&feature=youtu.be&t=2m16s");
             }
           })
-          .supertext({
-            start: 25,
-            end: 28,
-            activeClass: "parallax-container-active",
-            inactiveClass: "parallax-container-off",
-            text: '<img src="img/2-map-on.png">',
-            target:"pane-2-4"
-          })
+          /*.fade({
+            start: 88,
+            end: 110,
+            img1: "img/2-map-off.png",
+            img2: "img/2-map-on.png",
+            target: "pane-2-4",
+            rate: 0.05
+          })*/
            .fade({
             start: 1,
             end: 10,
