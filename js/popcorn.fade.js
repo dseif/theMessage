@@ -1,15 +1,14 @@
 (function ( Popcorn ) {
   function fade( from, to, rate ) {
-    from.style.opacity = from.style.opacity || 1;
-    to.style.opacity = to.style.opacity || 0;
+    from.style.opacity = 1;
+    to.style.opacity = 0;
       var fromOpacity = +from.style.opacity,
        toOpacity = +to.style.opacity,
        interval = setInterval(function() {
-         console.log( from, from.style.opacity );
           if ( fromOpacity > 0 ) {
             fromOpacity -= rate;
             toOpacity += rate;
-            from.style.opacity = fromOpacity;
+            from.style.opacity = "" + fromOpacity;
             to.style.opacity = "" + toOpacity;
           } else {
             clearInterval( interval );
@@ -20,13 +19,14 @@
     manifest: {
     },
     _setup: function( options ) {
-      function createImg( src ) {
+      function createImg( src, display ) {
         var img = document.createElement( "img" );
 
         img.src = options[ src ];
         img.style.zIndex = ++initialZindex;
         img.style.position = "absolute";
         img.style.top = 0 + "px";
+        display ? img.style.opacity = 100 : img.style.opacity = 0;
         options[ src ] = img;
         options.container.appendChild( img );
       }
@@ -35,8 +35,8 @@
       var initialZindex = options.container.style.zIndex || 0;
       console.log( "after z index",initialZindex );
 
-      createImg( "img1" );
-      createImg( "img2" );
+      createImg( "img1", true );
+      createImg( "img2");
       var rect = options.img1.getBoundingClientRect();
       console.log( rect );
     },
