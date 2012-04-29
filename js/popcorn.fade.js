@@ -31,8 +31,6 @@
         options.container.appendChild( img );
       }
 
-      console.log('SETUP');
-
       options.container = document.getElementById( options.target );
       var initialZindex = options.container.style.zIndex || 0;
 

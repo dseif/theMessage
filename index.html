@@ -82,7 +82,6 @@
           }
 
           if(offset > 2100 && offset < 3000) {
-            console.log( (offset - 2100)/3 * .01);
             $("#section-1 #sub-1").css("opacity", 1 - (.2 + ( (offset - 2100)/3 * .01) ) ) ;
           }
           return;
@@ -91,7 +90,6 @@
           p2.pause();
           p3.pause();
           //Section 2 ----------------------------------
-          parallax( "pane-2-bg", 4, sectionTop[2], 900);
           //Level A - Farthest
           parallax( "pane-2-6", .8, sectionTop[2], 100);
           //Level B - Base
@@ -276,10 +274,6 @@
   <script src="js/popcorn.supertext.js"></script>
   <script src="js/popcorn.fade.js"></script>
   <script src="js/lettering.js"></script>
-  <!--
-  <script src="js/stackblur.js"></script>
-  <script src="js/fastblur.js"></script>
--->
   <script type="text/javascript" src="http://use.typekit.com/fph5scc.js"></script>
   <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
   <script src="message.js"></script>
@@ -287,18 +281,6 @@
 
       $("#doc-height").text( $(document).height() );
       $("#window-height").text( $(window).height() );
-      $(window).scroll(function(e) {
-        var height = window.pageYOffset;
-        if ( height < 1600 &&  height > 1000 ) { 
-          //console.log(map(height, 1000, 1600, 40));
-          //$(".parallax-container-off").css( "textShadow", "0 0 "+map(height, 1000, 1600, 40)+"px white");
-        }
-        
-        if ( height < 600 ) { 
-          //boxBlurImage("img", "canvas", (height/600) * 10);
-        }
-        $("#scroll-position").text( height );
-      });
       $(window).resize( function(e) {
          $("#window-height").text( $(window).height() );
       });
