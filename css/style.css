@@ -98,6 +98,8 @@ td { vertical-align: top; }
     .video-container {
       width: 500px;
        z-index: 100000;
+       font-size: .9em;
+       font-style: italic;
     }
 
     canvas {
@@ -108,7 +110,7 @@ td { vertical-align: top; }
     /* TITLE SEQUENCE */
     #section-1 {
       padding-top: 200px;
-      height: 7000px;
+      height: 5000px;
     }
 
     #section-1 .title {
@@ -135,9 +137,17 @@ td { vertical-align: top; }
       position: absolute;
       left: 25%;
       width: 50%;
-      top: 1200px;
       font-size: 4em;  color: #FFF; }
 
+    #section-1 #sub-1 {
+      top: 1200px;
+    }
+
+    #section-1 #sub-2 {
+      top: 2800px;
+    }
+
+    #section-1
     .yellow {
         color: #F6DC7E;
       }
