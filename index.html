@@ -20,7 +20,7 @@
       position: relative;
     }
 
-    #video, #youtube object, .column {
+    #video, #video2, #video3, #youtube object, .column {
       width: 480px;
       z-index: 100000;
     }
@@ -106,12 +106,14 @@
     #pane-2-9 { left: 85% }
     #pane-2-10 { left: 10% }
 
-    #pane-3-1 { left: 30%;}
+    #pane-3-1 { left: 20%;}
     #pane-3-2 { left: 40% }
     #pane-3-3 { left: 60% }
     #pane-3-4 { left: 70% }
     #pane-3-5 { left: 80% }
     #pane-3-6 { left: 90% }
+
+    #pane-4-1 { left: 20%;}
 
 
     .parallax-container-off {
@@ -180,6 +182,7 @@
       var sectionTop = [];
       sectionTop[2] = document.getElementById("section-2").offsetTop;
       sectionTop[3] = document.getElementById("section-3").offsetTop;
+      sectionTop[4] = document.getElementById("section-4").offsetTop;
 
 
       $(window).scroll(function(e) {
@@ -204,10 +207,13 @@
         parallax( "pane-2-3", 1.6, sectionTop[2], 800 );
 
         //Section 3 ----------------------------------
-        parallax( "pane-3-1", .8, sectionTop[3] );
+        parallax( "pane-3-1", 1, sectionTop[3], 300 );
         parallax( "pane-3-2", 1, sectionTop[3], 300 );
         parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 500 );
         parallax(  "pane-3-4", 1.5, sectionTop[3], 300 );
+
+        //Section 4
+        parallax( "pane-4-1", 1, sectionTop[4], 300 );
 
       //Takes a single id or an array of ids.
       //Higher ratio = slower motion, higher position on the page.
@@ -299,7 +305,12 @@
       <div class="pane" id="pane-2-10"></div>
     </section>
     <section id="section-3">
-      <div class="pane" id="pane-3-1">1</div>
+      <div class="pane" id="pane-3-1"> 
+        <video id="video2" controls> 
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4.webm">
+          </video>
+      </div>
       <div class="pane" id="pane-3-2">2</div>
       <div class="pane" id="pane-3-3">3</div>
       <div class="pane" id="pane-3-4">4</div>
@@ -307,6 +318,18 @@
       <div class="pane" id="pane-3-6">6</div>
     </section>
     <section id="section-4">
+      <div class="pane" id="pane-4-1"> 
+        <video id="video3" controls> 
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Clip.mp4">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Clip.mp4.webm">
+          </video>
+      </div>
+      <div class="pane" id="pane-4-2">2</div>
+      <div class="pane" id="pane-4-3">4</div>
+      <div class="pane" id="pane-4-4">4</div>
+      <div class="pane" id="pane-4-5">5</div>
+      <div class="pane" id="pane-4-6">6</div>
+
     </section>
 
 
@@ -352,11 +375,18 @@
          $("#window-height").text( $(window).height() );
       });
 
-      var p = Popcorn( "#video" )
+      var p3 = Popcorn( "#video3" ),
+          p2 = Popcorn( "#video2" ),
+          p = Popcorn( "#video" );
 
       p.on( "canplayall", function( e ) {
           this.on( "ended", function() {
             scrollToSection( 2 );
+            p2.play( 0 );
+          });
+          p2.on( "ended", function() {
+            scrollToSection( 3 );
+            p3.play( 0 );
           });
           this.play(10).volume(0)
           .supertext({
