@@ -96,6 +96,7 @@ td { vertical-align: top; }
     }
 
     #video3 {
+      position: static;
       z-index: 1;
     }
 
@@ -199,7 +200,7 @@ td { vertical-align: top; }
       color: #FFF;
     }
      /*OFF*/
-    .parallax-container-off {
+    .parallax-container-off, .subtitles-off {
       opacity: 0.5;
       text-shadow: 0 0 20px white;
       color: transparent;
@@ -208,7 +209,7 @@ td { vertical-align: top; }
       -o-transition: all 1s ease;
       transition: all 1s ease;
     }   
-    .parallax-container-active {
+    .parallax-container-active, .subtitles-active {
       margin-top: 100px;
       opacity: 1;
       color: #FFF;
@@ -218,8 +219,16 @@ td { vertical-align: top; }
       -o-transition: all 1s ease;
       transition: all 1s ease;
     }
-
-    .pane > div > div {
+    .subtitles-active {
+      margin-top: 0px;
+    }
+    .subtitles-off {
+       //text-shadow: 0 0 0 white;
+    }
+    .pane > .subtitles-off > div {
+      padding: 0 30px;
+    }
+     .pane > div > div {
       padding: 30px;
     }
 
