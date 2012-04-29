@@ -65,74 +65,72 @@
         //SCROLLSTUFF
         var offset = window.pageYOffset;
 
-        if ( offset > sectionTop[ 2 ] && offset < sectionTop[ 3 ] ) {
-          p.play( p.currentTime() > 10 ? p.currentTime() : 10 );
+        if( offset < sectionTop[ 2 ] ) {
+          p.pause();
           p2.pause();
           p3.pause();
-        } else if ( offset > sectionTop[ 3 ] && offset < sectionTop[ 4 ] ) {
-          p2.play();
-          p.pause();
-          p3.pause();
-        } else if ( offset > sectionTop[ 4 ] ) {
-          p3.play();
-          p2.pause();
-          p.pause();
-        }
-
-        //TITLE ------------- 
-        $("#section-1 h1").css( {
-          "font-size" : 5.5 + (offset/10) + "em",
-          "opacity": 1 - (offset/1000)
-        });
-
-        if(offset > 1200 && offset < 2600) {
-          $("#section-1 #sub-1").css("opacity", 1);
-          $("#section-1 #sub-1").css( {
-            "top" : offset*1.5 - 400 + "px"
+          $("#section-1 h1").css( {
+            "font-size" : 5.5 + (offset/10) + "em",
+            "opacity": 1 - (offset/1000)
           });
-        }
 
-        if(offset > 2100 && offset < 3000) {
-          console.log( (offset - 2100)/3 * .01);
-          $("#section-1 #sub-1").css("opacity", 1 - (.2 + ( (offset - 2100)/3 * .01) ) ) ;
-        }
+          if(offset > 1200 && offset < 2600) {
+            $("#section-1 #sub-1").css("opacity", 1);
+            $("#section-1 #sub-1").css( {
+              "top" : offset*1.5 - 400 + "px"
+            });
+          }
 
-        //Play video 1
-        if(offset > 5266 && offset < 5366) {
-          p.play(10);
-        }
+          if(offset > 2100 && offset < 3000) {
+            console.log( (offset - 2100)/3 * .01);
+            $("#section-1 #sub-1").css("opacity", 1 - (.2 + ( (offset - 2100)/3 * .01) ) ) ;
+          }
+          return;
+        } else if ( offset >= sectionTop[ 2 ] && offset < sectionTop[ 3 ] ) {
+          p.paused() && p.play( p.currentTime() > 10 ? p.currentTime() : 10 );
+          p2.pause();
+          p3.pause();
+          //Section 2 ----------------------------------
+          parallax( "pane-2-bg", 4, sectionTop[2], 900);
+          //Level A - Farthest
+          parallax( "pane-2-6", .8, sectionTop[2], 100);
+          //Level B - Base
+          parallax( "pane-2-1", 1, sectionTop[2], 300 );
+          //Level C
+          parallax( "pane-2-2", 1.25, sectionTop[2], 100 );
+          //Level D
+          parallax( "pane-2-3", 1.6, sectionTop[2], 300 );
+          parallax( "pane-2-5", 0.9, sectionTop[2], 200 );
 
 
-        //Section 2 ----------------------------------
-        parallax( "pane-2-bg", 4, sectionTop[2], 900);
-        //Level A - Farthest
-        parallax( "pane-2-6", .8, sectionTop[2], 100);
-        //Level B - Base
-        parallax( "pane-2-1", 1, sectionTop[2], 300 );
-        //Level C
-        parallax( "pane-2-2", 1.25, sectionTop[2], 100 );
-        //Level D
-        parallax( "pane-2-3", 1.6, sectionTop[2], 300 );
-        parallax( "pane-2-5", 0.9, sectionTop[2], 200 );
 
-
-
-        parallax( "pane-2-7", 2, sectionTop[2], 150 );
-        parallax( "pane-2-8", 1.5, sectionTop[2], 175 );
-        parallax( "pane-2-9", 1, sectionTop[2], 150 );
-        parallax( "pane-2-10", 1.5, sectionTop[2], 700 );
+          parallax( "pane-2-7", 2, sectionTop[2], 150 );
+          parallax( "pane-2-8", 1.5, sectionTop[2], 175 );
+          parallax( "pane-2-9", 1, sectionTop[2], 150 );
+          parallax( "pane-2-10", 1.5, sectionTop[2], 700 );
        
-         parallax( "pane-2-4", 1.5, sectionTop[2], 400 );
-
-        //Section 3 ----------------------------------
-        parallax( "pane-3-1", 1, sectionTop[3], 300 );
-        parallax( "pane-3-2", 1, sectionTop[3], 300 );
-        parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 500 );
-        parallax(  "pane-3-4", 1.5, sectionTop[3], 300 );
-
-        //Section 4
-        parallax( "pane-4-1", 1, sectionTop[4], 300 );
-        $.ajax({
+          parallax( "pane-2-4", 1.5, sectionTop[2], 400 );
+          return;
+        } else if ( offset >= sectionTop[ 3 ] && offset < sectionTop[ 4 ] ) {
+          p2.paused && p2.play();
+          p.pause();
+          p3.pause();
+          //Section 3 ----------------------------------
+          parallax( "pane-3-1", 1, sectionTop[3], 300 );
+          parallax( "pane-3-2", 1, sectionTop[3], 300 );
+          parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 500 );
+          parallax(  "pane-3-4", 1.5, sectionTop[3], 300 );
+          return;
+        } else if ( offset >= sectionTop[ 4 ] ) {
+          p3.paused() && p3.play();
+          p2.pause();
+          p.pause();
+          //Section 4
+          parallax( "pane-4-1", 1, sectionTop[4], 300 );
+          return;
+        }
+        
+        /*$.ajax({
           url: document.location.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=20&callback=?&q=" + encodeURIComponent("http://news.google.com/news?gl=ca&q=limits%2Bgrowth%2Benvironment&um=1&ie=UTF-8&output=rss"),
           dataType: 'json',
           success: function(data) {
@@ -151,17 +149,10 @@
               parallax( "paneRSS-4-" + i, Math.floor((Math.random()*100)+1), element.offsetTop, Math.floor((Math.random()*800)+1) );
             }
           }
-        });
+        });*/
       //Takes a single id or an array of ids.
       //Higher ratio = slower motion, higher position on the page.
       //If you want it to start lower, increase the adjustment number
-
-      
-
-      if(offset === 6800) {
-        p.play(10);
-      }
-
     }); //SCROLL
 
       // CROWD
