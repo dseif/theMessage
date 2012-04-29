@@ -102,9 +102,8 @@
           p.play(10);
         }
 
-
         //Section 2 ----------------------------------
-        parallax( "pane-2-bg", 4, sectionTop[2], 900);
+        
         //Level A - Farthest
         parallax( "pane-2-6", .8, sectionTop[2], 100);
         //Level B - Base
@@ -125,6 +124,7 @@
          parallax( "pane-2-4", 1.5, sectionTop[2], 400 );
 
         //Section 3 ----------------------------------
+        parallax( "pane-3-bg", 4, sectionTop[2], 900);
         parallax( "pane-3-1", 1, sectionTop[3], 300 );
         parallax( "pane-3-2", 1, sectionTop[3], 300 );
         parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 500 );
@@ -183,7 +183,7 @@
   </script>
 </head>
 <body>
-<div id="bg-image"></div>
+
 <div class="wrapper">
   <div id="dev-info" style="position:fixed;bottom:40px;left:10px;background:rgba(0,0,0,.8);color:red;z-index:1000000">
     <!-- for dev: shows current scroll postiion -->
@@ -214,8 +214,6 @@
     -->
     </section>
     <section id="section-2">
-      
-      <div id="pane-2-bg" class="pane-bg"><img src="img/andromeda.png"/></div>
       <div class="pane" id="pane-2-1"> 
         <div class="video-container">
   
@@ -246,8 +244,11 @@
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/delingpole2.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/delingpole2.webm">
           </video>
+           <p>James Delingpole is the author of Watermelons: the Green Movement's True Colours.  This interview was filmed at The Heartland's Institute's 6th International Conference on Climate Change (June 2011, Washington, DC).</p>
         </div>
       </div>
+      <div id="bg-image"></div>
+      <div id="pane-3-bg" class="pane-bg"><img src="img/cityscape.jpg"/></div>
       <div class="pane" id="pane-3-2"></div>
       <div class="pane" id="pane-3-3"></div>
       <div class="pane" id="pane-3-4"></div>
