@@ -39,18 +39,51 @@
 
     /* TITLE SEQUENCE */
     #section-1 {
+      padding-top: 200px;
       height: 7000px;
     }
 
     #section-1 .title {
-      font-family: "athelas", "metallophile-sp8", georgia;
-      color: #FFF;
+      position: relative;
+      font-family: "atrament-web", "athelas", "metallophile-sp8", georgia;
+      color: transparent;
       text-align: center;
-      font-size: 15em;
       line-height: .8;
-      //text-transform: uppercase;
       font-weight: 200;
       margin: 0;
+    }
+    #title-container {
+      height: 800px;
+      overflow: hidden;
+    }
+    #section-1 h1.title { 
+      font-size: 5.5em;
+      text-transform: uppercase;
+      text-shadow: 0 0 0 #FFF;
+    }
+    #section-1 h2.title { 
+      font-family: edita;
+      line-height: 1.25;
+      position: absolute;
+      left: 25%;
+      width: 50%;
+      top: 1200px;
+      font-size: 6em;  color: #FFF; }
+
+    .yellow {
+        color: #F6DC7E;
+      }
+
+    #worldmap {
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+
+    #worldmap img {
+      position: absolute;
+      top: 0;
+      opacity: 0;
     }
 
 
@@ -161,7 +194,7 @@
     document.addEventListener( "DOMContentLoaded", function( event ) {
 
       //Title
-      $(".title").lettering();
+      $("h1.title").lettering();
       var buttons = document.getElementsByClassName( "sectionButtons" );
       window.scrollToSection = function( val ) {
         var element = $( "#section-" + ( val + 1 ) );
@@ -186,8 +219,16 @@
 
 
       $(window).scroll(function(e) {
-
+        //SCROLLSTUFF
         var offset = window.pageYOffset;
+
+        //TITLE
+        $("#section-1 h1").css( {
+          "font-size" : 5.5 + (offset/10) + "em",
+          "opacity": 1 - (offset/1000)
+         //,"text-shadow" : " #FFF 0 0 " + (offset/10) + "px"
+        });
+
         //Section 2 ----------------------------------
         parallax( "pane-2-bg", 4, sectionTop[2], 900);
         //Level A - Farthest
@@ -276,8 +317,15 @@
   <div id="main" role="main">
     <section id="section-1">
       <audio id="crowd" src="media/crowdnoise.mp3"></audio>
-      <h1 class="title">Limits of</h1>
-      <h1 class="title">Growth</h1>
+      <div id="worldmap">
+        <img id="img3" src="img/map-10.png" />
+        <img id="img2" src="img/map-5.png" />
+        <img id="img1" src="img/map-dark.png" /> 
+      </div>
+      <div id="title-container">
+        <h1 class="title">Limits of Growth<h1>
+      </div>
+      <h2 class="title">Exploring the relationship between <span class="yellow">economic growth</span> and<br/> <span class="yellow">environmental sustainability</span><h2>
        <div class="buttons">
           <button class="sectionButtons" id="sec1">Section 1</button>
           <button class="sectionButtons" id="sec2">Section 2</button>
