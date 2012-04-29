@@ -118,6 +118,11 @@
       //background: red; 
     }
 
+    section div img {
+      width: 300px;
+      height: 200px;
+    }
+
     .pane-bg {
       background: black;
       width: 100%;
@@ -395,6 +400,7 @@
   <script src="js/jquery.scrollTo-min.js" type="text/javascript" charset="utf-8"></script>
   <script src="js/jquery.scrollorama.js"></script>
   <script src="js/popcorn.supertext.js"></script>
+  <script src="js/popcorn.fade.js"></script>
   <script src="js/lettering.js"></script>
   <!--
   <script src="js/stackblur.js"></script>
@@ -453,14 +459,14 @@
             text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
             target:"pane-2-3"
           })
-          .supertext({
+          /*.supertext({
             start: 20,
             end: 24,
             activeClass: "parallax-container-active",
             inactiveClass: "parallax-container-off",
             text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
             target:"pane-2-4"
-          })
+          })*/
           .supertext({
             start: 20,
             end: 28,
@@ -508,8 +514,16 @@
             inactiveClass: "parallax-container-off",
             text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
             target:"pane-2-10"
+          })
+          .fade({
+            start: 1,
+            end: 10,
+            img1: "img/2-tree-off.png",
+            img2: "img/2-tree-on.png",
+            target: "pane-2-4",
+            rate: 0.05
           });
-          
+
           /*var section1 = $( "#section-2" ),
           var section1 = $( "#section-2" ),
               offsetTop = section1.offset().top,
