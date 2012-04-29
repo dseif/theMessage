@@ -86,7 +86,7 @@
           }
           return;
         } else if ( offset >= sectionTop[ 2 ] && offset < sectionTop[ 3 ] ) {
-          p.paused() && p.play( p.currentTime() > 10 ? p.currentTime() : 10 );
+          p.paused() && p.play( ( p.currentTime() > 10 && p.currentTime() < 129 ) ? p.currentTime() : 10 );
           p2.pause();
           p3.pause();
           //Section 2 ----------------------------------
@@ -294,6 +294,10 @@
       var p3 = Popcorn( "#video3" ),
           p2 = Popcorn( "#video2" ),
           p = Popcorn( "#video" );
+
+          p.cue( 129, function() {
+            this.trigger( "ended" );
+          });
 
       p3.on( "canplayall", function() {
         var obj = [
