@@ -48,25 +48,48 @@
       width: 100px;
       border: 1px solid black;
     }
+
     section {
       position: relative;
       background-color: #444;
-      height: 1000px;
+      height: 1500px;
       width: 100%;
       overflow-y: hidden;
       margin-bottom: 30px;
     }
 
-    #section-1 {
-      background: #000;
+    section > div {
+      position: absolute;
+      -webkit-transition: all .1s ease;
+
+      height: 100px;
+      width: 100px;
+      background: red; 
     }
 
-    #item-1-1 {
-      position: absolute;
-      top: 20px;
-      left: 400px;
-      color: #FFF;
+    .pane-bg {
+      background: black;
+      width: 100%;
+      height: 2000px;
     }
+    .pane-bg img{
+      width: 100%;
+      height: 2000px;
+      opacity: .2;
+    }
+    #pane-2-1 { left: 20%;}
+    #pane-2-2 { left: 40% }
+    #pane-2-3 { left: 60% }
+    #pane-2-4 { left: 70% }
+    #pane-2-5 { left: 80% }
+    #pane-2-6 { left: 90% }
+
+    #pane-3-1 { left: 30%;}
+    #pane-3-2 { left: 40% }
+    #pane-3-3 { left: 60% }
+    #pane-3-4 { left: 70% }
+    #pane-3-5 { left: 80% }
+    #pane-3-6 { left: 90% }
 
     .parallax-container {
       position: absolute;
@@ -125,29 +148,12 @@
       left: 500px;
     }
 
-        /*
-    #section-2 {
-      background-color: blue;
-    }
-    #section-3 {
-      background-color: green;
-    }
-    #section-4 {
-      background-color: yellow;
-    }
-
-    #parallax3 {
-      -webkit-transition: all 1s ease;
-    }
-    */
+     
   </style>
   <script>
     document.addEventListener( "DOMContentLoaded", function( event ) {
-      var buttons = document.getElementsByClassName( "sectionButtons" ),
-          scrollorama = $.scrollorama({
-            blocks: ".scrollblock"
-          });
-
+      var buttons = document.getElementsByClassName( "sectionButtons" );
+       
       for ( var i = 0, l = buttons.length; i < l; i++ ) {
         (function( counter ) {
           buttons[ i ].addEventListener( "click", function( e ) {
@@ -158,62 +164,62 @@
         })( i );
       }
 
-      scrollorama.animate("#parallax1", {
-        delay: 0,
-        duration: 1000,
-        property: "top",
-        start: 25,
-        end: 1086
-      });
+      //Section offsets, for scrolling
+      //Pre-calculated for speed
+      var sectionTop = [];
+      sectionTop[2] = document.getElementById("section-2").offsetTop;
+      sectionTop[3] = document.getElementById("section-3").offsetTop;
 
-      scrollorama.animate("#parallax2-1", {
-        delay: 0,
-        duration: 2000,
-        property: "top",
-        start: 0,
-        end: 1086,
-        easing: "easeInQuad"
-      });
-      scrollorama.animate("#video-2", {
-        delay: 0,
-        duration: 1400,
-        property: "top",
-        start: 0,
-        pin: true,
-        end: 1086,
-      });
 
-      scrollorama.animate("#parallax2-2", {
-        delay: 0,
-        duration: 1400,
-        property: "top",
-        start: 0,
-        end: 1086,
-        easing: "easeInQuad"
-      });
-       scrollorama.animate("#parallax2-3", {
-        delay: 30,
-        duration: 1700,
-        property: "top",
-        start: 300,
-        end: 1086,
-        easing: "easeInQuad"
-      });
-  
-      scrollorama.animate("#parallax3", {
-        delay: 100,
-        duration: 2000,
-        property: "top",
-        start: 0,
-        end: 1086
-      });
-      scrollorama.animate("#parallax4", {
-        delay: 0,
-        duration: 2000,
-        property: "top",
-        start: 0,
-        end: 1086
-      });
+      $(window).scroll(function(e) {
+        var offset = window.pageYOffset;
+
+        //Section 2 ----------------------------------
+        parallax( "pane-2-bg", 4, sectionTop[2], 900);
+        //Level A - Farthest
+        parallax( "pane-2-6", .8, sectionTop[2], 200);
+        //Level B - Base
+        parallax( "pane-2-2", 1, sectionTop[2], 300 );
+        //Level C
+        parallax( ["pane-2-3", "pane-2-5"], 1.25, sectionTop[2], 500 );
+        //Level D
+        parallax(  ["pane-2-4", "pane-2-1"], 1.5, sectionTop[2], 900 );
+        
+        //Section 3 ----------------------------------
+        parallax( "pane-3-1", .8, sectionTop[3] );
+        parallax( "pane-3-2", 1, sectionTop[3], 300 );
+        parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 500 );
+        parallax(  "pane-3-4", 1.5, sectionTop[3], 300 );
+
+      //Takes a single id or an array of ids.
+      //Higher ratio = slower motion, higher position on the page.
+      //If you want it to start lower, increase the adjustment number
+
+      function parallax(ids, ratio, top, adjustment) {
+        var i, j, elements = [];
+
+        if ( typeof ids === "string") {
+          elements.push( document.getElementById(ids) );
+        } else {
+          for(i=0; i<ids.length;i++) {
+            elements.push( document.getElementById(ids[i]) );
+          }
+        }
+        if(adjustment === undefined) {
+          adjustment = 0;
+        }
+
+        for(j=0;j<elements.length;j++) {
+          //Parent offset: var parentOffset = elements[j].parentNode.offsetTop;
+          //elements[j].style.top = -parentOffset + adjustment + ( offset/ratio ) + "px";
+          elements[j].style.top = ( -top + adjustment + (offset/ratio) ) + "px";
+          console.log( elements[j].style.top );
+        }
+      }
+
+    });
+
+     
             }, false);
   </script>
 </head>
@@ -239,61 +245,36 @@
     </div>
   </header>
   <div id="main" role="main">
-      <!--
-       <canvas id="canvas" width="300" height="300"></canvas>
-              <img id="img" src="img/facebook-egypt.jpg" width="300" height="300" />
-      -->
-      <section id="section-1">
-         <div id="item-1-1">My text</div>
-       <div class="scrollblock" id="examples-parallax">
-          <div id="parallax1">
-              <div id="info"></div>
-            </div>
-          </div>
-      </section>
-
-
-      <section id="section-2">
-        <div class="scrollblock">
-          <div id="parallax2-1" class="parallax-container parallax-container-A">
-          </div>
-          <div id="parallax2-2" class="parallax-container parallax-container-B">
-          </div>
-          <div id="parallax2-3" class=" parallax-container parallax-container-C parallax-container-off">
-            GOOGLE MAP
-          </div>
-          <div>
-           
-          </div>
-          <div class="parallax-video" class="scrollblock">
-             <div id="video-2">
-                <video id="video" controls> 
-                    <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
-                    <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
-                </video>
-            </div>
-          </div>
-        </div>
-   
+ <section id="section-1">
+    </section>
+    <section id="section-2">
+      <div id="pane-2-bg" class="pane-bg"><img src="img/andromeda.png"/></div>
+      <div id="pane-2-1"> 
+        <video id="video" controls> 
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
+          </video>
       </div>
-        </div>
-        </div>
-      </section>
-      <section id="section-3">
-        <div class="scrollblock">
-          <div id="parallax3">
-          
-              <img  src="http://lorempixel.com/400/400/sports/1/" />
-          </div>
-        </div>
-      </section>
-      <section id="section-4">
-        <div class="scrollblock">
-          <div id="parallax4">
-              <span>Parallax is awesome</span>
-          </div>
-        </div>
-      </section>
+      <div id="pane-2-2">2</div>
+      <div id="pane-2-3">3</div>
+      <div id="pane-2-4">4</div>
+      <div id="pane-2-5">5</div>
+      <div id="pane-2-6">6</div>
+    </section>
+    <section id="section-3">
+      <div id="pane-3-1">1</div>
+      <div id="pane-3-2">2</div>
+      <div id="pane-3-3">3</div>
+      <div id="pane-3-4">4</div>
+      <div id="pane-3-5">5</div>
+      <div id="pane-3-6">6</div>
+    </section>
+    <section id="section-4">
+    </section>
+
+
+            
+
   </div>
   <footer>
 
