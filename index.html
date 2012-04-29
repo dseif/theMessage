@@ -12,6 +12,28 @@
    
   </style>
   <script>
+    window.parallax = function(ids, ratio, top, adjustment) {
+        var i, j, elements = [],
+           offset = window.pageYOffset;
+
+        if ( typeof ids === "string") {
+          elements.push( document.getElementById(ids) );
+        } else {
+          for(i=0; i<ids.length;i++) {
+            elements.push( document.getElementById(ids[i]) );
+          }
+        }
+        if(adjustment === undefined) {
+          adjustment = 0;
+        }
+
+        for(j=0;j<elements.length;j++) {
+          //Parent offset: var parentOffset = elements[j].parentNode.offsetTop;
+          //elements[j].style.top = -parentOffset + adjustment + ( offset/ratio ) + "px";
+          elements[j].style.top = ( adjustment + ((offset - top) /ratio) ) + "px";
+
+        }
+      };
     document.addEventListener( "DOMContentLoaded", function( event ) {
 
       //Title
@@ -81,32 +103,31 @@
 
         //Section 4
         parallax( "pane-4-1", 1, sectionTop[4], 300 );
-      
+        $.ajax({
+          url: document.location.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=20&callback=?&q=" + encodeURIComponent("http://news.google.com/news?gl=ca&q=limits%2Bgrowth%2Benvironment&um=1&ie=UTF-8&output=rss"),
+          dataType: 'json',
+          success: function(data) {
+            var entries = data.responseData.feed.entries,
+                element = document.getElementById("section-4");
+
+            for ( var i = 0, l = entries.length; i < l; i++ ) {
+              var start = i * 10,
+                  container = document.createElement( "div" );
+
+              container.className = "pane";
+              container.style.left = Math.floor((Math.random()* 100) + 1)  + "%";
+              container.id = "paneRSS-4-" + i;
+              element.appendChild( container );
+
+              parallax( "paneRSS-4-" + i, Math.floor((Math.random()*100)+1), element.offsetTop, Math.floor((Math.random()*800)+1) );
+            }
+          }
+        });
       //Takes a single id or an array of ids.
       //Higher ratio = slower motion, higher position on the page.
       //If you want it to start lower, increase the adjustment number
 
-      function parallax(ids, ratio, top, adjustment) {
-        var i, j, elements = [];
-
-        if ( typeof ids === "string") {
-          elements.push( document.getElementById(ids) );
-        } else {
-          for(i=0; i<ids.length;i++) {
-            elements.push( document.getElementById(ids[i]) );
-          }
-        }
-        if(adjustment === undefined) {
-          adjustment = 0;
-        }
-
-        for(j=0;j<elements.length;j++) {
-          //Parent offset: var parentOffset = elements[j].parentNode.offsetTop;
-          //elements[j].style.top = -parentOffset + adjustment + ( offset/ratio ) + "px";
-          elements[j].style.top = ( adjustment + ((offset - top) /ratio) ) + "px";
-
-        }
-      }
+      
 
       if(offset === 6800) {
         p.play(10);
@@ -134,8 +155,6 @@
           }
           });
         });
-
-     
             }, false);
   </script>
 </head>
@@ -202,8 +221,7 @@
     </section>
     <section id="section-3">
       <div class="pane" id="pane-3-1"> 
-        <div class="video-container">
-        <video id="video2" controls> 
+        <video id="video2" controls data-timeline-sources="js/estella.srt"> 
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4.webm">
           </video>
@@ -237,8 +255,8 @@
 
   </footer>
 </div>
-  <script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>
-    <script>window.Popcorn || document.write('<script src="js/popcorn-complete.min.js"><\/script>')</script>
+<!--<script src="http://popcornjs.org/code/dist/popcorn-complete.js"></script>-->
+    <script>window.Popcorn || document.write('<script src="js/popcorn-complete.js"><\/script>')</script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/jquery-1.7.1.min.js"><\/script>')</script>
   <script src="js/jquery.scrollTo-min.js" type="text/javascript" charset="utf-8"></script>
@@ -273,10 +291,12 @@
          $("#window-height").text( $(window).height() );
       });
 
+      Popcorn.plugin.debug = true;
       var p3 = Popcorn( "#video3" ),
           p2 = Popcorn( "#video2" ),
           p = Popcorn( "#video" );
 
+        
       p.on( "canplayall", function( e ) {
           this.on( "ended", function() {
             scrollToSection( 2 );
@@ -303,7 +323,7 @@
             text: "",
             target:"pane-2-3",
             callback: function() {
-              var y = Popcorn.Youtube("youtube", "http://www.youtube.com/watch?v=PcEto_Q8MlY&feature=youtu.be&t=2m16s");
+              var y = Popcorn.youtube("youtube", "http://www.youtube.com/watch?v=PcEto_Q8MlY&feature=youtu.be&t=2m16s");
             }
           })
           .supertext({
