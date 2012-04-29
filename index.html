@@ -65,12 +65,29 @@
         //SCROLLSTUFF
         var offset = window.pageYOffset;
 
-        //TITLE
+        //TITLE ------------- 
         $("#section-1 h1").css( {
           "font-size" : 5.5 + (offset/10) + "em",
           "opacity": 1 - (offset/1000)
-         //,"text-shadow" : " #FFF 0 0 " + (offset/10) + "px"
         });
+
+        if(offset > 1200 && offset < 2600) {
+          $("#section-1 #sub-1").css("opacity", 1);
+          $("#section-1 #sub-1").css( {
+            "top" : offset*1.5 - 400 + "px"
+          });
+        }
+
+        if(offset > 2100 && offset < 3000) {
+          console.log( (offset - 2100)/3 * .01);
+          $("#section-1 #sub-1").css("opacity", 1 - (.2 + ( (offset - 2100)/3 * .01) ) ) ;
+        }
+
+        //Play video 1
+        if(offset > 5266 && offset < 5366) {
+          p.play(10);
+        }
+
 
         //Section 2 ----------------------------------
         parallax( "pane-2-bg", 4, sectionTop[2], 900);
@@ -79,16 +96,19 @@
         //Level B - Base
         parallax( "pane-2-1", 1, sectionTop[2], 300 );
         //Level C
-        parallax( "pane-2-2", 1.25, sectionTop[2], 0 );
+        parallax( "pane-2-2", 1.25, sectionTop[2], 100 );
         //Level D
+        parallax( "pane-2-3", 1.6, sectionTop[2], 300 );
+        parallax( "pane-2-5", 0.9, sectionTop[2], 200 );
 
-        parallax(  "pane-2-4", 1.5, sectionTop[2], 400 );
-        parallax(  "pane-2-5", 0.9, sectionTop[2], 600 );
+
+
         parallax( "pane-2-7", 2, sectionTop[2], 150 );
         parallax( "pane-2-8", 1.5, sectionTop[2], 175 );
-        parallax( "pane-2-9", 1, sectionTop[2], 100 );
+        parallax( "pane-2-9", 1, sectionTop[2], 150 );
         parallax( "pane-2-10", 1.5, sectionTop[2], 700 );
-        parallax( "pane-2-3", 1.6, sectionTop[2], 800 );
+       
+         parallax( "pane-2-4", 1.5, sectionTop[2], 400 );
 
         //Section 3 ----------------------------------
         parallax( "pane-3-1", 1, sectionTop[3], 300 );
@@ -140,13 +160,8 @@
           if (vol <= 1) {
             crowd.volume(vol);
           }
-          if (window.pageYOffset > 7000) {
-            var i;
-            for(i=1;i<100;i++) {
-              setTimeout(function() {
-                crowd.volume( (100-i)/100 );
-              }, 100);
-            }
+          if (window.pageYOffset > 5200) {
+            crowd.pause();
           }
           });
         });
@@ -162,7 +177,6 @@
     window:<span id="window-height"></span>
     doc:<span id="doc-height"></span>
   </div>
-
   <header>
   </header>
   <div id="main" role="main">
@@ -171,15 +185,19 @@
       <div id="worldmap">
       </div>
       <div id="title-container">
-        <h1 class="title">The Limits of Growth<h1>
+        <h1 class="title">The Limits of Growth?<h1>
       </div>
-      <h2 class="title">Exploring the relationship between <span class="yellow">economic growth</span> and<br/> <span class="yellow">environmental sustainability</span><h2>
+      <h2 id="sub-1" class="title">Exploring the relationship between <span class="yellow">economic growth</span> and<br/> <span class="yellow">environmental sustainability</span><h2>
+      <h2 id="sub-2" class="title">
+        A HTML5 Popcorn-powered debate using development footage from and inspired by <em>The Message: the (r)evolutionary power of climate change.</em>
+        <!--
        <div class="buttons">
           <button class="sectionButtons" id="sec1">Section 1</button>
           <button class="sectionButtons" id="sec2">Section 2</button>
           <button class="sectionButtons" id="sec3">Section 3</button>
           <button class="sectionButtons" id="sec4">Section 4</button>
       </div>
+    -->
     </section>
     <section id="section-2">
       
@@ -209,10 +227,12 @@
     </section>
     <section id="section-3">
       <div class="pane" id="pane-3-1"> 
+        <div class="video-container">
         <video id="video2" controls data-timeline-sources="js/estella.srt"> 
-              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4">
-              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4.webm">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/delingpole2.mp4">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/delingpole2.webm">
           </video>
+        </div>
         </div>
       </div>
       <div class="pane" id="pane-3-2"></div>
@@ -473,22 +493,23 @@
             callback: function() {
             }
           })
-          /*.fade({
+          .fade({
             start: 88,
-            end: 110,
+            end: 95,
             img1: "img/2-map-off.png",
             img2: "img/2-map-on.png",
             target: "pane-2-4",
             rate: 0.05
-          })*/
+          })
            .fade({
-            start: 1,
-            end: 10,
+            start: 116,
+            end: 126,
             img1: "img/2-tree-off.png",
             img2: "img/2-tree-on.png",
             target: "pane-2-5",
             rate: 0.05
           })
+           /*
           .supertext({
             start: 24,
             end: 30,
@@ -529,7 +550,7 @@
             text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
             target:"pane-2-10"
           });
-          
+          */
           /*var section1 = $( "#section-2" ),
           var section1 = $( "#section-2" ),
               offsetTop = section1.offset().top,
@@ -561,6 +582,11 @@
             instance.pause();
           }
         });*/
+
+      });
+
+     p2.on( "canplayall", function( e ) {
+          p2.pause();
       });
     </script>
   <!-- end scripts -->

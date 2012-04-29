@@ -31,14 +31,15 @@
         options.container.appendChild( img );
       }
 
+      console.log('SETUP');
+
       options.container = document.getElementById( options.target );
       var initialZindex = options.container.style.zIndex || 0;
-      console.log( "after z index",initialZindex );
 
       createImg( "img1", true );
       createImg( "img2");
       var rect = options.img1.getBoundingClientRect();
-      console.log( rect );
+
     },
     start: function( event, options ){
       fade( options.img1, options.img2, options.rate );

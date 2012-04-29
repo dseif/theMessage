@@ -80,7 +80,7 @@ td { vertical-align: top; }
 
  body {
       font-family: "edita", "Helvetica Neue", sans-serif;
-       //background: url(img/facebook-egypt.jpg) repeat;
+      background: #000;
     }
 
     .wrapper {
@@ -102,6 +102,8 @@ td { vertical-align: top; }
     .video-container {
       width: 500px;
        z-index: 100000;
+       font-size: .9em;
+       font-style: italic;
     }
 
     canvas {
@@ -112,7 +114,7 @@ td { vertical-align: top; }
     /* TITLE SEQUENCE */
     #section-1 {
       padding-top: 200px;
-      height: 7000px;
+      height: 5000px;
     }
 
     #section-1 .title {
@@ -139,9 +141,17 @@ td { vertical-align: top; }
       position: absolute;
       left: 25%;
       width: 50%;
-      top: 1200px;
       font-size: 4em;  color: #FFF; }
 
+    #section-1 #sub-1 {
+      top: 1200px;
+    }
+
+    #section-1 #sub-2 {
+      top: 2800px;
+    }
+
+    #section-1
     .yellow {
         color: #F6DC7E;
       }
@@ -177,7 +187,7 @@ td { vertical-align: top; }
       background-color: #000;
       height: 1500px;
       width: 100%;
-      overflow-y: hidden;
+      overflow: hidden;
       margin-bottom: 30px;
     }
 
@@ -223,12 +233,20 @@ td { vertical-align: top; }
       opacity: 1;
     }
 
+    #pane-2-2 .parallax-container-active {
+      margin-top: 0;
+    }
+
     #pane-2-3 { /*youtube*/
       left: 70%;
     }
     #pane-2-3 .parallax-container-off {
       text-shadow: 0 0 60px white;
       opacity: 0.8;
+    }
+
+    #pane-2-5 img {
+     width: 1000px;
     }
 
     .pane-bg {
@@ -245,7 +263,7 @@ td { vertical-align: top; }
     #pane-2-1 { left: 20%;}
     #pane-2-3 { left: 10% }
     #pane-2-4 { left: 40% }
-    #pane-2-5 { left: 60% }
+    #pane-2-5 { left: 30% }
     #pane-2-6 { left: 5% }
     #pane-2-7 { left: 20% }
     #pane-2-8 { left: 50% }
