@@ -170,13 +170,16 @@
       //Title
       $(".title").lettering();
       var buttons = document.getElementsByClassName( "sectionButtons" );
+      window.scrollToSection = function( val ) {
+        var element = $( "#section-" + ( val + 1 ) );
+        $.scrollTo( element, 1000 * val );
+      };
        
       for ( var i = 0, l = buttons.length; i < l; i++ ) {
         (function( counter ) {
           buttons[ i ].addEventListener( "click", function( e ) {
  
-            var element = $( "#section-" + ( counter + 1 ) );
-            $.scrollTo( element, 1000 * counter );
+            scrollToSection( counter ); 
           }, false);
         })( i );
       }
@@ -360,6 +363,9 @@
       var p = Popcorn( "#video" )
 
       p.on( "canplayall", function( e ) {
+          this.on( "ended", function() {
+            scrollToSection( 2 );
+          });
           this.play(10).volume(0)
           .supertext({
             start: 15,
@@ -434,6 +440,7 @@
             target:"pane-2-10"
           });
           
+          /*var section1 = $( "#section-2" ),
           var section1 = $( "#section-2" ),
               offsetTop = section1.offset().top,
               duration = this.duration(),
@@ -463,7 +470,7 @@
           if ( offset > ( offsetTop + section1.height() ) ) {
             instance.pause();
           }
-        });
+        });*/
       });
     </script>
   <!-- end scripts -->
