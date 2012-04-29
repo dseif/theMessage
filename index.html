@@ -65,17 +65,25 @@
         //SCROLLSTUFF
         var offset = window.pageYOffset;
 
-        //TITLE
+        //TITLE ------------- 
         $("#section-1 h1").css( {
           "font-size" : 5.5 + (offset/10) + "em",
           "opacity": 1 - (offset/1000)
         });
 
-        if(offset > 1078 && offset < 2000) {
-          $("#section-2 #sub-1").css( {
-            "top" : offset + "px"
+        if(offset > 1200 && offset < 2600) {
+          $("#section-1 #sub-1").css("opacity", 1);
+          $("#section-1 #sub-1").css( {
+            "top" : offset*1.5 - 400 + "px"
           });
         }
+        if(offset > 2600 && offset < 3000) {
+          $("#section-1 #sub-1").css("opacity", 0);
+          $("#section-1 #sub-2").css( {
+            "font-size" : 4 + ((offset - 2100)/200) + "em",
+          });
+        }
+
 
         //Section 2 ----------------------------------
         parallax( "pane-2-bg", 4, sectionTop[2], 900);
@@ -87,8 +95,8 @@
         parallax( "pane-2-2", 1.25, sectionTop[2], 0 );
         //Level D
 
-        parallax(  "pane-2-4", 1.5, sectionTop[2], 400 );
-        parallax(  "pane-2-5", 0.9, sectionTop[2], 600 );
+        parallax( "pane-2-4", 1.5, sectionTop[2], 400 );
+        parallax( "pane-2-5", 0.9, sectionTop[2], 600 );
         parallax( "pane-2-7", 2, sectionTop[2], 150 );
         parallax( "pane-2-8", 1.5, sectionTop[2], 175 );
         parallax( "pane-2-9", 1, sectionTop[2], 100 );
@@ -185,13 +193,14 @@
       <h2 id="sub-1" class="title">Exploring the relationship between <span class="yellow">economic growth</span> and<br/> <span class="yellow">environmental sustainability</span><h2>
       <h2 id="sub-2" class="title">
         A HTML5 Popcorn-powered debate using development footage from and inspired by The Message: the (r)evolutionary power of climate change.
-
+        <!--
        <div class="buttons">
           <button class="sectionButtons" id="sec1">Section 1</button>
           <button class="sectionButtons" id="sec2">Section 2</button>
           <button class="sectionButtons" id="sec3">Section 3</button>
           <button class="sectionButtons" id="sec4">Section 4</button>
       </div>
+    -->
     </section>
     <section id="section-2">
       
