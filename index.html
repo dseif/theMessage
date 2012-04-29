@@ -9,158 +9,7 @@
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/style.css">
   <style type="text/css">
-    body {
-      font-family: "edita", "Helvetica Neue", sans-serif;
-       //background: url(img/facebook-egypt.jpg) repeat;
-    }
-
-    .wrapper {
-      width: 100%;
-      margin: 0 auto;
-      position: relative;
-    }
-
-    #video, #video2, #video3, #youtube object, .column {
-      width: 480px;
-      z-index: 100000;
-    }
-
-    .video-container {
-      width: 480px;
-      margin-top: 100px;
-      margin-left: 400px;
-       z-index: 100000;
-    }
-
-    canvas {
-      height: 800px !important;
-      width: 800px !important;
-    }
-
-    /* TITLE SEQUENCE */
-    #section-1 {
-      height: 7000px;
-    }
-
-    #section-1 .title {
-      font-family: "athelas", "metallophile-sp8", georgia;
-      color: #FFF;
-      text-align: center;
-      font-size: 15em;
-      line-height: .8;
-      //text-transform: uppercase;
-      font-weight: 200;
-      margin: 0;
-    }
-
-
-    #examples-parallax {
-      position: absolute;
-      height: 600px;
-    }
-
-    #blur {
-      position: absolute;
-      top:0;
-      height: 100px;
-      width: 100px;
-      border: 1px solid black;
-    }
-
-    section {
-      position: relative;
-      background-color: #000;
-      height: 1500px;
-      width: 100%;
-      overflow-y: hidden;
-      margin-bottom: 30px;
-    }
-
-    section > .pane {
-      position: absolute;
-      -webkit-transition: all .1s ease;
-      color: #FFF;
-      height: 200px;
-      width: 300px;
-      //background: red; 
-    }
-
-    section div img {
-      width: 300px;
-      height: 200px;
-    }
-
-    .pane-bg {
-      background: black;
-      width: 100%;
-      height: 2000px;
-    }
-    .pane-bg img{
-      width: 100%;
-      height: 2000px;
-      opacity: .2;
-    }
-    #pane-2-1 { left: 20%;}
-    #pane-2-2 { left: 40% }
-    #pane-2-3 { left: 60% }
-    #pane-2-4 { left: 70% }
-    #pane-2-5 { left: 60% }
-    #pane-2-6 { left: 5% }
-    #pane-2-7 { left: 20% }
-    #pane-2-8 { left: 50% }
-    #pane-2-9 { left: 85% }
-    #pane-2-10 { left: 10% }
-
-    #pane-3-1 { left: 20%;}
-    #pane-3-2 { left: 40% }
-    #pane-3-3 { left: 60% }
-    #pane-3-4 { left: 70% }
-    #pane-3-5 { left: 80% }
-    #pane-3-6 { left: 90% }
-
-    #pane-4-1 { left: 20%;}
-
-
-    .parallax-container-off {
-      text-shadow: 0 0 40px white;
-      color: transparent;
-      -webkit-transition: all 1s ease;
-      -moz-transition: all 1s ease;
-      -o-transition: all 1s ease;
-      transition: all 1s ease;
-    }
-
-    .paralax-container-off:hover, .parallax-container-active {
-      color: #FFF;
-      text-shadow: none;
-      -webkit-transition: all 1s ease;
-      -moz-transition: all 1s ease;
-      -o-transition: all 1s ease;
-      transition: all 1s ease;
-    }
-
-    .parallax-container-A .parallax-container-off {
-      text-shadow: 0 0 40px white;
-      
-    }
-    .parallax-container-B .parallax-container-off {
-      text-shadow: 0 0 10px white;
-      
-    }
-    .parallax-container-C .parallax-container-off {
-      text-shadow: 0 0 5px white;
-       font-size: 7em;
-    }
-
-    .parallax-container > div > div {
-      padding: 30px;
-    }
-
-    #tree-2 {
-      bg-image(url/img)
-    }
-
-     
+   
   </style>
   <script>
     window.parallax = function(ids, ratio, top, adjustment) {
@@ -184,16 +33,16 @@
           elements[j].style.top = ( adjustment + ((offset - top) /ratio) ) + "px";
 
         }
-      }
+      };
     document.addEventListener( "DOMContentLoaded", function( event ) {
 
       //Title
-      $(".title").lettering();
+      $("h1.title").lettering();
       var buttons = document.getElementsByClassName( "sectionButtons" );
       window.scrollToSection = function( val ) {
         var element = $( "#section-" + ( val + 1 ) );
         $.scrollTo( element, 1000 * val );
-      };
+      }
        
       for ( var i = 0, l = buttons.length; i < l; i++ ) {
         (function( counter ) {
@@ -213,8 +62,16 @@
 
 
       $(window).scroll(function(e) {
-
+        //SCROLLSTUFF
         var offset = window.pageYOffset;
+
+        //TITLE
+        $("#section-1 h1").css( {
+          "font-size" : 5.5 + (offset/10) + "em",
+          "opacity": 1 - (offset/1000)
+         //,"text-shadow" : " #FFF 0 0 " + (offset/10) + "px"
+        });
+
         //Section 2 ----------------------------------
         parallax( "pane-2-bg", 4, sectionTop[2], 900);
         //Level A - Farthest
@@ -222,7 +79,7 @@
         //Level B - Base
         parallax( "pane-2-1", 1, sectionTop[2], 300 );
         //Level C
-        parallax( "pane-2-2", 1.25, sectionTop[2], 500 );
+        parallax( "pane-2-2", 1.25, sectionTop[2], 0 );
         //Level D
 
         parallax(  "pane-2-4", 1.5, sectionTop[2], 400 );
@@ -261,14 +118,17 @@
             }
           }
         });
-    
       //Takes a single id or an array of ids.
       //Higher ratio = slower motion, higher position on the page.
       //If you want it to start lower, increase the adjustment number
 
       
 
-    });
+      if(offset === 6800) {
+        p.play(10);
+      }
+
+    }); //SCROLL
 
       // CROWD
       var crowd = Popcorn("#crowd");
@@ -280,16 +140,24 @@
           if (vol <= 1) {
             crowd.volume(vol);
           }
+          if (window.pageYOffset > 7000) {
+            var i;
+            for(i=1;i<100;i++) {
+              setTimeout(function() {
+                crowd.volume( (100-i)/100 );
+              }, 100);
+            }
+          }
+          });
         });
-      });
-          }, false);
+            }, false);
   </script>
 </head>
 <body>
 
 <div id="bg-image"></div>
 <div class="wrapper">
-  <div id="dev-info" style="position:fixed;bottom:10px;left:10px;background:rgba(0,0,0,.8);color:red;z-index:1000000">
+  <div id="dev-info" style="position:fixed;bottom:40px;left:10px;background:rgba(0,0,0,.8);color:red;z-index:1000000">
     <!-- for dev: shows current scroll postiion -->
     scroll:<span id="scroll-position"></span>
     window:<span id="window-height"></span>
@@ -301,8 +169,15 @@
   <div id="main" role="main">
     <section id="section-1">
       <audio id="crowd" src="media/crowdnoise.mp3"></audio>
-      <h1 class="title">Limits of</h1>
-      <h1 class="title">Growth</h1>
+      <div id="worldmap">
+        <img id="img3" src="img/map-10.png" />
+        <img id="img2" src="img/map-5.png" />
+        <img id="img1" src="img/map-dark.png" /> 
+      </div>
+      <div id="title-container">
+        <h1 class="title">The Limits of Growth<h1>
+      </div>
+      <h2 class="title">Exploring the relationship between <span class="yellow">economic growth</span> and<br/> <span class="yellow">environmental sustainability</span><h2>
        <div class="buttons">
           <button class="sectionButtons" id="sec1">Section 1</button>
           <button class="sectionButtons" id="sec2">Section 2</button>
@@ -314,15 +189,22 @@
       
       <div id="pane-2-bg" class="pane-bg"><img src="img/andromeda.png"/></div>
       <div class="pane" id="pane-2-1"> 
+        <div class="video-container">
+  
         <video id="video" controls> 
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
           </video>
+            <p>Naomi Klein (No Logo, The Shock Doctrine) presented this TED Talk, "Addicted to Risk" in December 2010 in Washington, DC.</p>
+        </div>
       </div>
-      <div class="pane" id="pane-2-2"></div>
+      <div class="pane" id="pane-2-2">
+        <div id="youtube">
+        </div>
+      </div>
       <div class="pane" id="pane-2-3"></div>
-      <div class="pane" id="pane-2-4"></div>
-      <div class="pane" id="pane-2-5"></div>
+      <div class="pane" id="pane-2-4"><img src="img/2-map-off.png"></div>
+      <div class="pane" id="pane-2-5"><img src="img/2-tree-off.png"></div>
       <div class="pane" id="pane-2-6"></div>
       <div class="pane" id="pane-2-7"></div>
       <div class="pane" id="pane-2-8"></div>
@@ -335,6 +217,7 @@
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Edits.mp4.webm">
           </video>
+        </div>
       </div>
       <div class="pane" id="pane-3-2">2</div>
       <div class="pane" id="pane-3-3">3</div>
@@ -344,10 +227,12 @@
     </section>
     <section id="section-4">
       <div class="pane" id="pane-4-1"> 
+        <div class="video-container">
         <video id="video3" controls> 
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Clip.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Clip.mp4.webm">
           </video>
+          </div>
       </div>
       <div class="pane" id="pane-4-2">2</div>
       <div class="pane" id="pane-4-3">4</div>
@@ -355,10 +240,7 @@
       <div class="pane" id="pane-4-5">5</div>
       <div class="pane" id="pane-4-6">6</div>
 
-    </section>
-
-
-            
+    </section>      
 
   </div>
   <footer>
@@ -416,38 +298,41 @@
             scrollToSection( 3 );
             p3.play( 0 );
           });
-          this.play(10).volume(0)
+          this
           .supertext({
-            start: 15,
-            end: 18,
+            start: 20,
+            end: 23,
             activeClass: "parallax-container-active",
             inactiveClass: "parallax-container-off",
             text: "Supremacy",
             target: "pane-2-2"
           })
           .supertext({
-            start: 20,
-            end: 22,
+            start: 23,
+            end: 25,
             activeClass: "parallax-container-active",
             inactiveClass: "parallax-container-off",
-            text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
-            target:"pane-2-3"
+            text: "",
+            target:"pane-2-3",
+            callback: function() {
+              var y = Popcorn.youtube("youtube", "http://www.youtube.com/watch?v=PcEto_Q8MlY&feature=youtu.be&t=2m16s");
+            }
           })
-          /*.supertext({
-            start: 20,
-            end: 24,
-            activeClass: "parallax-container-active",
-            inactiveClass: "parallax-container-off",
-            text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
-            target:"pane-2-4"
-          })*/
           .supertext({
-            start: 20,
+            start: 25,
             end: 28,
             activeClass: "parallax-container-active",
             inactiveClass: "parallax-container-off",
-            text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
-            target:"pane-2-5"
+            text: '<img src="img/2-map-on.png">',
+            target:"pane-2-4"
+          })
+           .fade({
+            start: 1,
+            end: 10,
+            img1: "img/2-tree-off.png",
+            img2: "img/2-tree-on.png",
+            target: "pane-2-5",
+            rate: 0.05
           })
           .supertext({
             start: 24,
@@ -488,16 +373,8 @@
             inactiveClass: "parallax-container-off",
             text: "And it struck me that, in its own way, the bizarre ad was a crass version of our founding story—we slapped mother nature around and won. And we will always win, because dominating nature is our destiny.",
             target:"pane-2-10"
-          })
-          .fade({
-            start: 1,
-            end: 10,
-            img1: "img/2-tree-off.png",
-            img2: "img/2-tree-on.png",
-            target: "pane-2-4",
-            rate: 0.05
           });
-
+          
           /*var section1 = $( "#section-2" ),
           var section1 = $( "#section-2" ),
               offsetTop = section1.offset().top,

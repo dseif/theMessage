@@ -78,18 +78,186 @@ td { vertical-align: top; }
  /* ----------- PRIMARY STYLES - @k88hudson ---------- */
 
 
+ body {
+      font-family: "edita", "Helvetica Neue", sans-serif;
+       //background: url(img/facebook-egypt.jpg) repeat;
+    }
+
+    .wrapper {
+      width: 100%;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    video {
+      position:relative;
+      width: 100%;
+      z-index: 100000;
+    }
+
+    .video-container {
+      width: 500px;
+       z-index: 100000;
+    }
+
+    canvas {
+      height: 800px !important;
+      width: 800px !important;
+    }
+
+    /* TITLE SEQUENCE */
+    #section-1 {
+      padding-top: 200px;
+      height: 7000px;
+    }
+
+    #section-1 .title {
+      position: relative;
+      font-family: "atrament-web", "athelas", "metallophile-sp8", georgia;
+      color: transparent;
+      text-align: center;
+      line-height: .8;
+      font-weight: 200;
+      margin: 0;
+    }
+    #title-container {
+      height: 800px;
+      overflow: hidden;
+    }
+    #section-1 h1.title { 
+      font-size: 5.5em;
+      text-transform: uppercase;
+      text-shadow: 0 0 0 #FFF;
+    }
+    #section-1 h2.title { 
+      font-family: edita;
+      line-height: 1.25;
+      position: absolute;
+      left: 25%;
+      width: 50%;
+      top: 1200px;
+      font-size: 6em;  color: #FFF; }
+
+    .yellow {
+        color: #F6DC7E;
+      }
+
+    #worldmap {
+      position: absolute;
+      top: 0;
+      z-index: 0;
+    }
+
+    #worldmap img {
+      position: absolute;
+      top: 0;
+      opacity: 0;
+    }
 
 
+    #examples-parallax {
+      position: absolute;
+      height: 600px;
+    }
 
+    #blur {
+      position: absolute;
+      top:0;
+      height: 100px;
+      width: 100px;
+      border: 1px solid black;
+    }
 
+    section {
+      position: relative;
+      background-color: #000;
+      height: 1500px;
+      width: 100%;
+      overflow-y: hidden;
+      margin-bottom: 30px;
+    }
 
+    /* PANE */
+    section > .pane {
+      position: absolute;
+      font-size: 2em;
+      -webkit-transition: all .1s ease;
+      color: #FFF;
+    }
+     /*OFF*/
+    .parallax-container-off {
+      opacity: 0.5;
+      text-shadow: 0 0 20px white;
+      color: transparent;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+    }   
+    .parallax-container-active {
+      margin-top: 100px;
+      opacity: 1;
+      color: #FFF;
+      text-shadow: none;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+    }
 
+    .pane > div > div {
+      padding: 30px;
+    }
 
+    /*SECTION 2 POPCORN */
+    #pane-2-2 { /*supremacy*/
+      left: 20%;
+      font-size: 5em;
+    }
+    #pane-2-2 .parallax-container-off {
+      text-shadow: 0 0 100px white;
+      opacity: 1;
+    }
 
+    #pane-2-3 { /*youtube*/
+      left: 70%;
+    }
+    #pane-2-3 .parallax-container-off {
+      text-shadow: 0 0 60px white;
+      opacity: 0.8;
+    }
 
+    .pane-bg {
+      background: black;
+      width: 100%;
+      height: 2000px;
+    }
+    .pane-bg img{
+      width: 100%;
+      height: 2000px;
+      opacity: .2;
+    }
 
+    #pane-2-1 { left: 20%;}
+    #pane-2-3 { left: 10% }
+    #pane-2-4 { left: 40% }
+    #pane-2-5 { left: 60% }
+    #pane-2-6 { left: 5% }
+    #pane-2-7 { left: 20% }
+    #pane-2-8 { left: 50% }
+    #pane-2-9 { left: 85% }
+    #pane-2-10 { left: 10% }
 
+    #pane-3-1 { left: 20%;}
+    #pane-3-2 { left: 40% }
+    #pane-3-3 { left: 60% }
+    #pane-3-4 { left: 70% }
+    #pane-3-5 { left: 80% }
+    #pane-3-6 { left: 90% }
 
+    #pane-4-1 { left: 20%;}
+
+   
 
 
  /* ----------- MEDIA QUERIES ----------------------- */
