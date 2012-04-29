@@ -25,8 +25,10 @@
       z-index: 100000;
     }
 
-    #video-container {
+    .video-container {
       width: 480px;
+      margin-top: 100px;
+      margin-left: 400px;
        z-index: 100000;
     }
 
@@ -68,10 +70,7 @@
 
     .parallax-container {
       position: absolute;
-      font-size: 2em;
       color: #FFF;
-      max-width: 500px;
-      
     }
 
     .parallax-container-off {
@@ -82,7 +81,8 @@
       -o-transition: all 1s ease;
       transition: all 1s ease;
     }
-    .parallax-container-active {
+
+    .paralax-container-off:hover, .parallax-container-active {
       color: #FFF;
       text-shadow: none;
       -webkit-transition: all 1s ease;
@@ -91,21 +91,38 @@
       transition: all 1s ease;
     }
 
+    .parallax-container-A .parallax-container-off {
+      text-shadow: 0 0 40px white;
+      
+      
+    }
+    .parallax-container-B .parallax-container-off {
+      text-shadow: 0 0 10px white;
+      
+    }
+    .parallax-container-C .parallax-container-off {
+      text-shadow: 0 0 5px white;
+       font-size: 7em;
+    }
+
+
+
     .parallax-container > div > div {
       padding: 30px;
     }
 
     #parallax2-1 {
-      left: 50px;
+      left: 450px;
       font-size: 5em;
     }
 
     #parallax2-2 {
-      left: 260px;
+      left: 460px;
+      width: 300px
     }
 
     #paralax2-3 {
-      left: 200px;
+      left: 500px;
     }
 
         /*
@@ -128,7 +145,6 @@
     document.addEventListener( "DOMContentLoaded", function( event ) {
       var buttons = document.getElementsByClassName( "sectionButtons" ),
           scrollorama = $.scrollorama({
-            enablePin: false,
             blocks: ".scrollblock"
           });
 
@@ -158,6 +174,15 @@
         end: 1086,
         easing: "easeInQuad"
       });
+      scrollorama.animate("#video-2", {
+        delay: 0,
+        duration: 1400,
+        property: "top",
+        start: 0,
+        pin: true,
+        end: 1086,
+      });
+
       scrollorama.animate("#parallax2-2", {
         delay: 0,
         duration: 1400,
@@ -230,18 +255,18 @@
 
       <section id="section-2">
         <div class="scrollblock">
-          <div id="parallax2-1" class="parallax-container">
+          <div id="parallax2-1" class="parallax-container parallax-container-A">
           </div>
-          <div id="parallax2-2" class="parallax-container">
+          <div id="parallax2-2" class="parallax-container parallax-container-B">
           </div>
-          <div id="parallax2-3" class="parallax-container">
+          <div id="parallax2-3" class=" parallax-container parallax-container-C parallax-container-off">
             GOOGLE MAP
           </div>
           <div>
            
           </div>
-          <div class="parallax-video">
-             <div id="video-container">
+          <div class="parallax-video" class="scrollblock">
+             <div id="video-2">
                 <video id="video" controls> 
                     <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4">
                     <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/NaomiKlein_TED%20TALK%20Excerpt2010.mp4.webm">
