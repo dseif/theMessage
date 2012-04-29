@@ -89,15 +89,14 @@ td { vertical-align: top; }
       position: relative;
     }
 
-    #video, #video2, #video3, #youtube object, .column {
-      width: 480px;
+    video {
+      position:relative;
+      width: 100%;
       z-index: 100000;
     }
 
     .video-container {
-      width: 480px;
-      margin-top: 100px;
-      margin-left: 400px;
+      width: 500px;
        z-index: 100000;
     }
 
@@ -178,18 +177,54 @@ td { vertical-align: top; }
       margin-bottom: 30px;
     }
 
+    /* PANE */
     section > .pane {
       position: absolute;
+      font-size: 2em;
       -webkit-transition: all .1s ease;
       color: #FFF;
-      height: 200px;
-      width: 300px;
-      //background: red; 
+    }
+     /*OFF*/
+    .parallax-container-off {
+      opacity: 0.5;
+      text-shadow: 0 0 20px white;
+      color: transparent;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
+    }   
+    .parallax-container-active {
+      margin-top: 100px;
+      opacity: 1;
+      color: #FFF;
+      text-shadow: none;
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -o-transition: all 1s ease;
+      transition: all 1s ease;
     }
 
-    section div img {
-      width: 300px;
-      height: 200px;
+    .pane > div > div {
+      padding: 30px;
+    }
+
+    /*SECTION 2 POPCORN */
+    #pane-2-2 { /*supremacy*/
+      left: 20%;
+      font-size: 5em;
+    }
+    #pane-2-2 .parallax-container-off {
+      text-shadow: 0 0 100px white;
+      opacity: 1;
+    }
+
+    #pane-2-3 { /*youtube*/
+      left: 70%;
+    }
+    #pane-2-3 .parallax-container-off {
+      text-shadow: 0 0 60px white;
+      opacity: 0.8;
     }
 
     .pane-bg {
@@ -202,10 +237,10 @@ td { vertical-align: top; }
       height: 2000px;
       opacity: .2;
     }
+
     #pane-2-1 { left: 20%;}
-    #pane-2-2 { left: 40% }
-    #pane-2-3 { left: 60% }
-    #pane-2-4 { left: 70% }
+    #pane-2-3 { left: 10% }
+    #pane-2-4 { left: 40% }
     #pane-2-5 { left: 60% }
     #pane-2-6 { left: 5% }
     #pane-2-7 { left: 20% }
@@ -222,58 +257,7 @@ td { vertical-align: top; }
 
     #pane-4-1 { left: 20%;}
 
-
-    .parallax-container-off {
-      text-shadow: 0 0 40px white;
-      color: transparent;
-      -webkit-transition: all 1s ease;
-      -moz-transition: all 1s ease;
-      -o-transition: all 1s ease;
-      transition: all 1s ease;
-    }
-
-    .paralax-container-off:hover, .parallax-container-active {
-      color: #FFF;
-      text-shadow: none;
-      -webkit-transition: all 1s ease;
-      -moz-transition: all 1s ease;
-      -o-transition: all 1s ease;
-      transition: all 1s ease;
-    }
-
-    .parallax-container-A .parallax-container-off {
-      text-shadow: 0 0 40px white;
-      
-    }
-    .parallax-container-B .parallax-container-off {
-      text-shadow: 0 0 10px white;
-      
-    }
-    .parallax-container-C .parallax-container-off {
-      text-shadow: 0 0 5px white;
-       font-size: 7em;
-    }
-
-    .parallax-container > div > div {
-      padding: 30px;
-    }
-
-    #tree-2 {
-      bg-image(url/img)
-    }
-
-     
-
-
-
-
-
-
-
-
-
-
-
+   
 
 
  /* ----------- MEDIA QUERIES ----------------------- */
