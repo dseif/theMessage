@@ -247,7 +247,7 @@ td { vertical-align: top; }
     }
 
     #pane-2-3 { /*youtube*/
-      left: 70%;
+      left: 30%;
     }
     #pane-2-3 .parallax-container-off {
       text-shadow: 0 0 60px white;
@@ -275,7 +275,7 @@ td { vertical-align: top; }
     }
 
     #pane-2-1 { left: 20%;}
-    #pane-2-3 { left: 10% }
+    #pane-2-3 { left: 60% }
     #pane-2-4 { left: 40% }
     #pane-2-5 { left: 30% }
     #pane-2-6 { left: 5% }

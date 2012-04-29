@@ -474,15 +474,13 @@
             text: "Supremacy",
             target: "pane-2-2"
           })
-          .supertext({
-            start: 23,
-            end: 25,
-            activeClass: "parallax-container-active",
-            inactiveClass: "parallax-container-off",
-            text: "",
-            target:"pane-2-3",
-            callback: function() {
-            }
+          .fade({
+            start: 65,
+            end: 70,
+            img1: "img/2-truck-off.png",
+            img2: "img/2-truck.png",
+            target: "pane-2-3",
+            rate: 0.05
           })
           .fade({
             start: 88,
