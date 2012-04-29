@@ -255,9 +255,14 @@ td { vertical-align: top; }
     }
 
     #pane-2-5 img {
-     width: 1000px;
-    }
-
+     width: 1000p
+   }
+     #pane-3-3 .parallax-container-active{
+        margin-top: 0;
+     }
+     #pane-4-bg img {
+        opacity: .3;
+     }
     .pane-bg {
       background: black;
       width: 100%;
@@ -280,11 +285,11 @@ td { vertical-align: top; }
     #pane-2-10 { left: 10% }
 
     #pane-3-1 { left: 20%;}
-    #pane-3-2 { left: 30% }
-    #pane-3-3 { left: 10% }
+    #pane-3-2 { left: 0%; font-size: 3em; }
+    #pane-3-3 { left: 10%; font-size: 4em; }
     #pane-3-4 { left: 40% }
     #pane-3-5 { left: 50% }
-    #pane-3-6 { left: 20% }
+    #pane-3-6 { left: 20%; }
 
     #pane-4-1 { left: 20%;}
 

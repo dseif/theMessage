@@ -117,8 +117,8 @@
           p3.pause();
           //Section 3 ----------------------------------
           parallax( "pane-3-1", 1, sectionTop[3], 300 );
-          parallax( "pane-3-2", 1, sectionTop[3], 300 );
-          parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 500 );
+          parallax( "pane-3-2", 1, sectionTop[3], 100 );
+          parallax( ["pane-3-3", "pane-3-5"], 1.25, sectionTop[3], 200 );
           parallax(  "pane-3-4", 1.5, sectionTop[3], 300 );
           return;
         } else if ( offset >= sectionTop[ 4 ] ) {
@@ -238,6 +238,7 @@
         </div>
       </div>
       <div id="bg-image"></div>
+
       <div id="pane-3-bg" class="pane-bg"><img src="img/cityscape.jpg"/></div>
       <div class="pane" id="pane-3-2"></div>
       <div class="pane" id="pane-3-3"></div>
@@ -246,12 +247,16 @@
       <div class="pane" id="pane-3-6"></div>
     </section>
     <section id="section-4">
+       <div id="pane-4-bg" class="pane-bg"><img src="img/forest.jpg"/></div>
       <div class="pane" id="pane-4-1"> 
         <div class="video-container">
         <video id="video3" controls> 
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/estal2.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/estal2.webm">
           </video>
+          <p>Estela Herandez is the President of the Mangrove Association and a key leader of La Coordinadora in El Salvador. </p>
+
+<p>The groups' members are primarily subsistence farmers and fisherfolk whose livelihoods depend on the viability of local ecosystems.</p>
           </div>
       </div>
       <div class="pane" id="pane-4-2"></div>
@@ -609,16 +614,16 @@
        .fade({
          start: 40,
          end: 50,
-         img1: "img/2-tree-off.png",
-         img2: "img/2-tree-on.png",
+         img1: "img/3-baby-off.png",
+         img2: "img/3-baby-on.png",
          target: "pane-3-4",
          rate: 0.05
        })
        .fade({
          start: 70,
          end: 80,
-         img1: "img/2-tree-off.png",
-         img2: "img/2-tree-on.png",
+         img1: "img/3-death-off.png",
+         img2: "img/3-death-on.png",
          target: "pane-3-5",
          rate: 0.05
        })
