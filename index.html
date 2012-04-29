@@ -129,7 +129,6 @@
           parallax( "pane-4-1", 1, sectionTop[4], 300 );
           return;
         }
-        
         /*$.ajax({
           url: document.location.protocol + "//ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=20&callback=?&q=" + encodeURIComponent("http://news.google.com/news?gl=ca&q=limits%2Bgrowth%2Benvironment&um=1&ie=UTF-8&output=rss"),
           dataType: 'json',
@@ -174,7 +173,7 @@
   </script>
 </head>
 <body>
-<div id="bg-image"></div>
+
 <div class="wrapper">
   <div id="dev-info" style="position:fixed;bottom:40px;left:10px;background:rgba(0,0,0,.8);color:red;z-index:1000000">
     <!-- for dev: shows current scroll postiion -->
@@ -205,8 +204,6 @@
     -->
     </section>
     <section id="section-2">
-      
-      <div id="pane-2-bg" class="pane-bg"><img src="img/andromeda.png"/></div>
       <div class="pane" id="pane-2-1"> 
         <div class="video-container">
   
@@ -237,8 +234,11 @@
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/delingpole2.mp4">
               <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/delingpole2.webm">
           </video>
+           <p>James Delingpole is the author of Watermelons: the Green Movement's True Colours.  This interview was filmed at The Heartland's Institute's 6th International Conference on Climate Change (June 2011, Washington, DC).</p>
         </div>
       </div>
+      <div id="bg-image"></div>
+      <div id="pane-3-bg" class="pane-bg"><img src="img/cityscape.jpg"/></div>
       <div class="pane" id="pane-3-2"></div>
       <div class="pane" id="pane-3-3"></div>
       <div class="pane" id="pane-3-4"></div>
@@ -462,8 +462,8 @@
             }
 
           obj[ i ].target = container.id;
-          obj[ i ].activeClass = "parallax-container-active";
-          obj[ i ].inactiveClass = "parallax-container-off";
+          obj[ i ].activeClass = "subtitles-active";
+          obj[ i ].inactiveClass = "subtitles-off";
 
           p3.supertext(obj[ i ]);
         }
