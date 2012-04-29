@@ -1,5 +1,4 @@
 <!doctype html>
-    };
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -155,7 +154,6 @@
   </script>
 </head>
 <body>
-
 <div id="bg-image"></div>
 <div class="wrapper">
   <div id="dev-info" style="position:fixed;bottom:40px;left:10px;background:rgba(0,0,0,.8);color:red;z-index:1000000">
@@ -217,26 +215,26 @@
           </video>
         </div>
       </div>
-      <div class="pane" id="pane-3-2">2</div>
-      <div class="pane" id="pane-3-3">3</div>
-      <div class="pane" id="pane-3-4">4</div>
-      <div class="pane" id="pane-3-5">5</div>
-      <div class="pane" id="pane-3-6">6</div>
+      <div class="pane" id="pane-3-2"></div>
+      <div class="pane" id="pane-3-3"></div>
+      <div class="pane" id="pane-3-4"></div>
+      <div class="pane" id="pane-3-5"></div>
+      <div class="pane" id="pane-3-6"></div>
     </section>
     <section id="section-4">
       <div class="pane" id="pane-4-1"> 
         <div class="video-container">
         <video id="video3" controls> 
-              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Clip.mp4">
-              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/James%20Delingpole%20Clip.mp4.webm">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/estal2.mp4">
+              <source src="http://videos-origin.mozilla.org/serv/webmademovies/hothacks/message/estal2.webm">
           </video>
           </div>
       </div>
-      <div class="pane" id="pane-4-2">2</div>
-      <div class="pane" id="pane-4-3">4</div>
-      <div class="pane" id="pane-4-4">4</div>
-      <div class="pane" id="pane-4-5">5</div>
-      <div class="pane" id="pane-4-6">6</div>
+      <div class="pane" id="pane-4-2"></div>
+      <div class="pane" id="pane-4-3"></div>
+      <div class="pane" id="pane-4-4"></div>
+      <div class="pane" id="pane-4-5"></div>
+      <div class="pane" id="pane-4-6"></div>
 
     </section>      
 
@@ -286,6 +284,166 @@
           p2 = Popcorn( "#video2" ),
           p = Popcorn( "#video" );
 
+      p3.on( "canplayall", function() {
+        var obj = [
+          {
+            start: 2,
+            end: 6,
+            text: 'The economic model we live with '
+          },
+          {
+            start: 6,
+            end: 10,
+            text: 'creates human needs and desires'
+          },
+          {
+            start: 10,
+            end: 15,
+            text: 'to the point that they are considered essential, '
+          },
+          {
+            start: 15,
+            end: 20,
+            text: 'and those that can’t fulfill them feel completely vulnerable.'
+          },
+          {
+            start: 20,
+            end: 24,
+            text: 'This is a creation, an external reality.  '
+          },
+          {
+            start: 24,
+            end: 28,
+            text: 'But it’s been interiorized, and then,'
+          },
+          {
+            start: 28,
+            end: 34,
+            text: 'it begins to feel like an elemental part of being human.'
+          },
+          {
+            start: 34,
+            end: 40,
+            text: 'But for us, we have a different vision'
+          },
+          {
+            start: 40,
+            end: 46,
+            text: 'of development, of satisfaction, and of necessity.'
+          },
+          {
+            start: 46,
+            end: 51,
+            text: 'Here we’re talking about food, '
+          },
+          {
+            start: 51,
+            end: 56,
+            text: 'here we’re talking about '
+          },
+          {
+            start: 57,
+            end: 61,
+            text: 'harmonizing with our resources,'
+          },
+          {
+            start: 61,
+            end: 66,
+            text: 'and considering what these can provide us.'
+          },
+          {
+            start: 65.54399871826172,
+            end: 65.54399871826172,
+            text: 'undefined'
+          },
+          {
+            start: 66,
+            end: 73,
+            text: 'We’re at the point where have enough experience in an area'
+          },
+          {
+            start: 73,
+            end: 77,
+            text: 'that we know and understand the resources we have,'
+          },
+          {
+            start: 77,
+            end: 81,
+            text: 'at the level of flora, and the level of fauna,'
+          },
+          {
+            start: 81,
+            end: 84,
+            text: 'which of them have commercial value,'
+          },
+          {
+            start: 84,
+            end: 88,
+            text: 'understanding what their necessities are,'
+          },
+          {
+            start: 88,
+            end: 91,
+            text: 'and that these resources with commercial value'
+          },
+          {
+            start: 91,
+            end: 96,
+            text: 'provide a livelihood for part of the population.'
+          },
+          {
+            start: 96,
+            end: 101,
+            text: 'But the question is, how do we make these livelihoods sustainable'
+          },
+          {
+            start: 101,
+            end: 106,
+            text: 'for the current generation, as well as for generations to come? '
+          },
+          {
+            start: 106,
+            end: 113,
+            text: 'This is how we keep humanity at the center of development,'
+          },
+          {
+            start: 113,
+            end: 116,
+            text: 'while understanding that these resources'
+          },
+          {
+            start: 116,
+            end: 120,
+            text: 'are inseparable from the people that use them.'
+          },
+          {
+            start: 120,
+            end: 127,
+            text: 'So it’s not that idea of reckless resource exploitation, '
+          }
+        ],
+        element = document.getElementById("section-4"),
+        container;
+        for ( var i = 0, l = obj.length; i < l; i++ ) {
+          
+        if( i % 5 === 0 ) {
+          container = document.createElement( "div" );
+
+              container.className = "pane";
+              container.style.left = Math.floor((Math.random()* 60) + 1)  + "%";
+              container.id = "paneRSS-4-" + i;
+              element.appendChild( container );
+
+              parallax( "paneRSS-4-" + i, Math.floor((Math.random()*100)+1), element.offsetTop, Math.floor((Math.random()*1200)+1) );
+            }
+
+          obj[ i ].target = container.id;
+          obj[ i ].activeClass = "parallax-container-active";
+          obj[ i ].inactiveClass = "parallax-container-off";
+
+          p3.supertext(obj[ i ]);
+        }
+      });
         
       p.on( "canplayall", function( e ) {
           this.on( "ended", function() {

@@ -95,6 +95,10 @@ td { vertical-align: top; }
       z-index: 100000;
     }
 
+    #video3 {
+      z-index: 1;
+    }
+
     .video-container {
       width: 500px;
        z-index: 100000;
